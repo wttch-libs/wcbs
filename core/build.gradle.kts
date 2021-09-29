@@ -14,7 +14,7 @@ dependencies {
 publishing {
     publications {
         create<MavenPublication>("mavenJava") {
-            artifactId = project.name
+            artifactId = "wcbs-core"
 
             println("ArtifactInfo($groupId:$artifactId:$version)")
 
