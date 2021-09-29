@@ -8,7 +8,7 @@ plugins {
 repositories {
     mavenCentral()
     maven {
-        setUrl("https://oss.sonatype.org/content/repositories/snapshots/")
+        setUrl(Constants.MAVEN_SNAPSHOT_URL)
     }
 }
 

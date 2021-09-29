@@ -1,2 +1,2 @@
-rootProject.name = "root"
+rootProject.name = "wttch-wcbs"
 include("core")
