@@ -1,4 +1,4 @@
-name: Publish Snapshot CI [Core]
+name: 发布快照[wcbs:core]
 
 on:
   push:

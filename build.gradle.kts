@@ -1,6 +1,8 @@
+import com.wttch.plugin.libs.Constants
+
 plugins {
     java
-    id(Plugins.spotless) version Versions.Plugin.spotless
+    id("com.diffplug.spotless") version "5.11.0"
     `maven-publish`
     signing
 }
@@ -12,9 +14,21 @@ repositories {
     }
 }
 
+buildscript {
+    dependencies {
+        classpath("com.wttch.plugin:libs:0.2-SNAPSHOT")
+    }
+
+    repositories {
+        maven {
+            setUrl("https://oss.sonatype.org/content/repositories/snapshots/")
+        }
+    }
+}
+
 subprojects {
     apply {
-        plugin(Plugins.spotless)
+        plugin("com.diffplug.spotless")
         plugin("java")
         plugin("maven-publish")
         plugin("signing")

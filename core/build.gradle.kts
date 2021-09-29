@@ -1,4 +1,5 @@
-import exts.isReleaseVersion
+import com.wttch.plugin.libs.Publishing
+import com.wttch.plugin.libs.exts.isReleaseVersion
 
 group = "com.wttch"
 version = "0.1-SNAPSHOT"
