@@ -78,14 +78,18 @@ subprojects {
             create<MavenPublication>("mavenJava") {
                 artifactId = project.name
 
-                println("ArtifactInfo($groupId:$artifactId:${project.version})")
-
                 from(components["java"])
 
                 pom(com.wttch.plugin.libs.Publishing.pom)
             }
         }
         repositories(com.wttch.plugin.libs.Publishing.repositories(project))
+    }
+
+    tasks.named("publish") {
+        doLast {
+            println("快照已发布：(${project.group}:${project.name}:${project.version})")
+        }
     }
 
     signing {
@@ -95,5 +99,18 @@ subprojects {
 
     tasks.withType<Sign>().configureEach {
         onlyIf { project.isReleaseVersion() }
+    }
+}
+
+tasks.register("publishAll") {
+    group = "publishing"
+    doFirst {
+        println("开始发布快照")
+    }
+    dependsOn(":wcbs-core:publish")
+    dependsOn(":wcbs-spring-boot-autoconfigure:publish")
+    dependsOn(":wcbs-spring-boot-starter:publish")
+    doLast {
+        println("快照发布完成")
     }
 }
