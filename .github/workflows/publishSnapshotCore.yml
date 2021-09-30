@@ -27,5 +27,9 @@ jobs:
           java-version: 11
       - name: Make gradlew executable
         run: chmod +x ./gradlew
-      - name: Publish Snapshot
+      - name: Publish Snapshot core
         run: ./gradlew :core:publish -DossrhUsername=${{ secrets.OSSRH_USERNAME }} -DossrhPassword=${{ secrets.OSSRH_PASSWORD }}
+      - name: Publish Snapshot wcbs-spring-boot-autoconfigure
+        run: ./gradlew :wcbs-spring-boot-autoconfigure:publish -DossrhUsername=${{ secrets.OSSRH_USERNAME }} -DossrhPassword=${{ secrets.OSSRH_PASSWORD }}
+      - name: Publish Snapshot wcbs-spring-boot-start
+        run: ./gradlew :wcbs-spring-boot-start:publish -DossrhUsername=${{ secrets.OSSRH_USERNAME }} -DossrhPassword=${{ secrets.OSSRH_PASSWORD }}
