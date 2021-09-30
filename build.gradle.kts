@@ -1,4 +1,5 @@
 import com.wttch.plugin.libs.Constants
+import com.wttch.plugin.libs.Libs
 
 plugins {
     java
@@ -16,7 +17,7 @@ repositories {
 
 buildscript {
     dependencies {
-        classpath("com.wttch.plugin:libs:0.2-SNAPSHOT")
+        classpath("com.wttch.plugin:libs:0.3-SNAPSHOT")
     }
 
     repositories {
@@ -36,6 +37,12 @@ subprojects {
 
     dependencies {
         testImplementation("junit", "junit", "4.12")
+
+        // lombok
+        compileOnly(Libs.lombok)
+        annotationProcessor(Libs.lombok)
+        testCompileOnly(Libs.lombok)
+        testAnnotationProcessor(Libs.lombok)
     }
 
     spotless {
