@@ -1,5 +1,6 @@
 import com.wttch.plugin.libs.Constants
 import com.wttch.plugin.libs.Libs
+import com.wttch.plugin.libs.exts.isReleaseVersion
 
 plugins {
     java
@@ -29,8 +30,8 @@ buildscript {
 
 subprojects {
     apply {
-        plugin("com.diffplug.spotless")
         plugin("java")
+        plugin("com.diffplug.spotless")
         plugin("maven-publish")
         plugin("signing")
     }
@@ -43,6 +44,13 @@ subprojects {
         annotationProcessor(Libs.lombok)
         testCompileOnly(Libs.lombok)
         testAnnotationProcessor(Libs.lombok)
+    }
+
+    repositories {
+        mavenCentral()
+        maven {
+            setUrl(com.wttch.plugin.libs.Constants.MAVEN_SNAPSHOT_URL)
+        }
     }
 
     spotless {
@@ -60,5 +68,32 @@ subprojects {
         targetCompatibility = JavaVersion.VERSION_11
         withJavadocJar()
         withSourcesJar()
+    }
+
+    group = "com.wttch"
+    version = "0.1-SNAPSHOT"
+
+    publishing {
+        publications {
+            create<MavenPublication>("mavenJava") {
+                artifactId = project.name
+
+                println("ArtifactInfo($groupId:$artifactId:${project.version})")
+
+                from(components["java"])
+
+                pom(com.wttch.plugin.libs.Publishing.pom)
+            }
+        }
+        repositories(com.wttch.plugin.libs.Publishing.repositories(project))
+    }
+
+    signing {
+        // useInMemoryPgpKeys("", "")
+        sign(publishing.publications["mavenJava"])
+    }
+
+    tasks.withType<Sign>().configureEach {
+        onlyIf { project.isReleaseVersion() }
     }
 }
