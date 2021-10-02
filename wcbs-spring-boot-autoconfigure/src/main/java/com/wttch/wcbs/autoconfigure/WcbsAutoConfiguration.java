@@ -51,6 +51,7 @@ public class WcbsAutoConfiguration {
         sum += resources.length;
         Arrays.stream(resources)
             .filter(resource -> resource.getFilename() != null)
+            .filter(Resource::exists)
             .sorted(Comparator.comparing(Resource::getFilename))
             .collect(Collectors.toList())
             .forEach(populator::addScript);
