@@ -3,8 +3,10 @@ package com.wttch.wcbs.autoconfigure;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import javax.sql.DataSource;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
@@ -14,6 +16,7 @@ import org.springframework.jdbc.datasource.init.DataSourceInitializer;
 import org.springframework.jdbc.datasource.init.DatabasePopulator;
 import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
 
+@Slf4j
 @Configuration
 @EnableConfigurationProperties({WcbsProperties.class})
 public class WcbsAutoConfiguration {
@@ -35,19 +38,25 @@ public class WcbsAutoConfiguration {
 
   private DatabasePopulator databasePopulator() {
     final var populator = new ResourceDatabasePopulator();
-    Resource[] resources;
+    populator.setSeparator(";;");
     try {
-      resources = ctx.getResources("classpath:init/mysql/function.sql");
-      resources =
-          Arrays.stream(resources)
-              .filter(resource -> resource.getFilename() != null)
-              .sorted(Comparator.comparing(Resource::getFilename))
-              .collect(Collectors.toList())
-              .toArray(new Resource[] {});
-      for (var resource : resources) {
-        populator.addScript(resource);
-        populator.setSeparator(";;");
+      var functionResource = ctx.getResource("classpath:init/mysql/function.sql");
+      populator.addScript(functionResource);
+      log.info("已加载mysql初始化函数");
+
+      var paths = Optional.ofNullable(wcbsProperties.getInitSqlPath()).orElse(new String[] {});
+      var sum = 0;
+      for (var path : paths) {
+        var resources = ctx.getResources(path);
+        sum += resources.length;
+        Arrays.stream(resources)
+            .filter(resource -> resource.getFilename() != null)
+            .sorted(Comparator.comparing(Resource::getFilename))
+            .collect(Collectors.toList())
+            .forEach(populator::addScript);
       }
+      log.info("已从{}个文件夹，加载{}个初始化sql文件", paths.length, sum);
+
     } catch (IOException e) {
       e.printStackTrace();
     }
