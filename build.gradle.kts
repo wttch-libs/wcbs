@@ -1,7 +1,8 @@
 import com.wttch.plugin.libs.Constants
-import com.wttch.plugin.libs.publish.*
-import com.wttch.plugin.libs.dependencies.*
+import com.wttch.plugin.libs.dependencies.Lombok
 import com.wttch.plugin.libs.exts.isReleaseVersion
+import com.wttch.plugin.libs.publish.pom
+import com.wttch.plugin.libs.publish.sonatypeAutoRepositories
 
 plugins {
     java
@@ -74,7 +75,7 @@ subprojects {
     }
 
     group = "com.wttch"
-    version = "0.1.0002-SNAPSHOT"
+    version = "0.1.1.0001-SNAPSHOT"
 
     publishing {
         publications {

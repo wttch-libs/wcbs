@@ -1,0 +1,14 @@
+server:
+  port: 18080
+  servlet:
+    context-path: /
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:10002/iam?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&allowPublicKeyRetrieval=true&useSSL=false
+    username: iam
+    password: iam
+
+wttch:
+  wcbs:
+    init-sql-path:
+      - classpath:modify-sql/*.sql
