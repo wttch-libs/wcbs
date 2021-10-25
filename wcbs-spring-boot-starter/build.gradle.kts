@@ -1,3 +1,3 @@
 dependencies {
-    implementation("com.wttch:wcbs-spring-boot-autoconfigure:$version")
+    api(project(":wcbs-spring-boot-autoconfigure"))
 }

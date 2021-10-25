@@ -1,9 +1,11 @@
 import com.wttch.plugin.libs.Constants
-import com.wttch.plugin.libs.Libs
+import com.wttch.plugin.libs.publish.*
+import com.wttch.plugin.libs.dependencies.*
 import com.wttch.plugin.libs.exts.isReleaseVersion
 
 plugins {
     java
+    `java-library`
     id("com.diffplug.spotless") version "5.11.0"
     `maven-publish`
     signing
@@ -18,7 +20,7 @@ repositories {
 
 buildscript {
     dependencies {
-        classpath("com.wttch.plugin:libs:0.3-SNAPSHOT")
+        classpath("com.wttch.plugin:libs:0.4.0001-SNAPSHOT")
     }
 
     repositories {
@@ -31,6 +33,7 @@ buildscript {
 subprojects {
     apply {
         plugin("java")
+        plugin("java-library")
         plugin("com.diffplug.spotless")
         plugin("maven-publish")
         plugin("signing")
@@ -40,10 +43,10 @@ subprojects {
         testImplementation("junit", "junit", "4.12")
 
         // lombok
-        compileOnly(Libs.lombok)
-        annotationProcessor(Libs.lombok)
-        testCompileOnly(Libs.lombok)
-        testAnnotationProcessor(Libs.lombok)
+        compileOnly(Lombok.lombok)
+        annotationProcessor(Lombok.lombok)
+        testCompileOnly(Lombok.lombok)
+        testAnnotationProcessor(Lombok.lombok)
     }
 
     repositories {
@@ -71,7 +74,7 @@ subprojects {
     }
 
     group = "com.wttch"
-    version = "0.1-SNAPSHOT"
+    version = "0.1.0001-SNAPSHOT"
 
     publishing {
         publications {
@@ -79,11 +82,10 @@ subprojects {
                 artifactId = project.name
 
                 from(components["java"])
-
-                pom(com.wttch.plugin.libs.Publishing.pom)
+                pom("Wttch Core Base System", "Wttch Core Base System", "wttch-libs", "wcbs")
             }
         }
-        repositories(com.wttch.plugin.libs.Publishing.repositories(project))
+        sonatypeAutoRepositories(project)
     }
 
     tasks.named("publish") {

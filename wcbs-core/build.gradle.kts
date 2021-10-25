@@ -1,13 +1,16 @@
-import com.wttch.plugin.libs.Libs
-import com.wttch.plugin.libs.Publishing
-import com.wttch.plugin.libs.exts.isReleaseVersion
+import com.wttch.plugin.libs.dependencies.JakartaAnnotation
+import com.wttch.plugin.libs.dependencies.Jetbrains
+import com.wttch.plugin.libs.dependencies.Spring
 
 dependencies {
-    implementation(Libs.Jetbrains.annotations)
+    implementation(Jetbrains.annotations)
 
     implementation("com.wttch:common:0.1-SNAPSHOT")
 
-    implementation(Libs.Jakarta.annotation)
-    implementation(Libs.Spring.beans)
-    implementation(Libs.Spring.tx)
+
+    implementation("org.springframework.boot:spring-boot-configuration-processor:2.5.2")
+    implementation(JakartaAnnotation.api)
+
+    implementation(Spring.beans)
+    implementation(Spring.tx)
 }

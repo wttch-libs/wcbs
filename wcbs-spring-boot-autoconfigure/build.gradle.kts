@@ -1,6 +1,8 @@
-import com.wttch.plugin.libs.Libs
+
+import com.wttch.plugin.libs.dependencies.Spring
+
 
 dependencies {
-    implementation(Libs.SpringBoot.starter)
-    implementation(Libs.Spring.jdbc)
+    implementation(Spring.Boot.starter)
+    implementation(Spring.jdbc)
 }

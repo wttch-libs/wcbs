@@ -1,0 +1,16 @@
+{
+  "groups": [
+    {
+      "name": "wttch.wcbs",
+      "type": "com.wttch.wcbs.autoconfigure.WcbsProperties",
+      "sourceType": "com.wttch.wcbs.autoconfigure.WcbsProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "wttch.wcbs.init-sql-path",
+      "type": "java.lang.String[]",
+      "description": "spring项目启动时加载的所有初始化sql"
+    }
+  ]
+}
