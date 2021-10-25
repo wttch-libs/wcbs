@@ -74,7 +74,7 @@ subprojects {
     }
 
     group = "com.wttch"
-    version = "0.1.0001-SNAPSHOT"
+    version = "0.1.0002-SNAPSHOT"
 
     publishing {
         publications {

@@ -29,7 +29,7 @@ public class WcbsAutoConfiguration {
     this.ctx = ctx;
   }
 
-  @ConditionalOnBean(name = "dataSource")
+  @ConditionalOnBean(DataSource.class)
   @Bean
   public DataSourceInitializer dataSourceInitializer(final DataSource dataSource) {
     final var initializer = new DataSourceInitializer();
