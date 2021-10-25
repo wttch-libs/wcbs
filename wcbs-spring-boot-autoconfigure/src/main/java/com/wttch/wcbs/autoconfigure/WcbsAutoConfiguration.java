@@ -7,6 +7,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import javax.sql.DataSource;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
@@ -28,6 +29,7 @@ public class WcbsAutoConfiguration {
     this.ctx = ctx;
   }
 
+  @ConditionalOnBean(name = "dataSource")
   @Bean
   public DataSourceInitializer dataSourceInitializer(final DataSource dataSource) {
     final var initializer = new DataSourceInitializer();

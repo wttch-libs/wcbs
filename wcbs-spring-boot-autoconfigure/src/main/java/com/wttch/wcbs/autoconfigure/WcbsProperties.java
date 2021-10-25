@@ -12,5 +12,6 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @AllArgsConstructor
 @ConfigurationProperties(prefix = "wttch.wcbs")
 public final class WcbsProperties {
+
   private String[] initSqlPath;
 }

@@ -20,7 +20,7 @@ repositories {
 
 buildscript {
     dependencies {
-        classpath("com.wttch.plugin:libs:0.4.0001-SNAPSHOT")
+        classpath("com.wttch.plugin:libs:0.4.0003-SNAPSHOT")
     }
 
     repositories {

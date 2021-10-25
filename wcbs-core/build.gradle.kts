@@ -8,7 +8,6 @@ dependencies {
     implementation("com.wttch:common:0.1-SNAPSHOT")
 
 
-    implementation("org.springframework.boot:spring-boot-configuration-processor:2.5.2")
     implementation(JakartaAnnotation.api)
 
     implementation(Spring.beans)
