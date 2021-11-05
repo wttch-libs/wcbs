@@ -53,7 +53,7 @@ subprojects {
     repositories {
         mavenCentral()
         maven {
-            setUrl(com.wttch.plugin.libs.Constants.MAVEN_SNAPSHOT_URL)
+            setUrl(Constants.MAVEN_SNAPSHOT_URL)
         }
     }
 
@@ -75,7 +75,7 @@ subprojects {
     }
 
     group = "com.wttch"
-    version = "0.1.1.0001-SNAPSHOT"
+    version = "0.1.1.0002-SNAPSHOT"
 
     publishing {
         publications {

@@ -1,28 +1,30 @@
 package com.wttch.wcbs.autoconfigure;
 
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.Optional;
-import java.util.stream.Collectors;
-import javax.sql.DataSource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.Resource;
 import org.springframework.jdbc.datasource.init.DataSourceInitializer;
 import org.springframework.jdbc.datasource.init.DatabasePopulator;
 import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
 
+import javax.sql.DataSource;
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
 @Slf4j
 @Configuration
 @AutoConfigureAfter({DataSourceTransactionManagerAutoConfiguration.class})
 @EnableConfigurationProperties({WcbsProperties.class})
+@ComponentScan({"com.wttch.wcbs.autoconfigure"})
 public class WcbsAutoConfiguration {
   private final WcbsProperties wcbsProperties;
   private final ApplicationContext ctx;
