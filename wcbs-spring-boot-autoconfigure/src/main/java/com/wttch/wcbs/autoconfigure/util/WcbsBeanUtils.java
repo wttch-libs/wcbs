@@ -1,12 +1,11 @@
 package com.wttch.wcbs.autoconfigure.util;
 
-import org.springframework.beans.BeanUtils;
-import org.springframework.beans.BeanWrapperImpl;
-import org.springframework.beans.BeansException;
-
 import java.beans.PropertyDescriptor;
 import java.util.HashSet;
 import java.util.Set;
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.BeanWrapperImpl;
+import org.springframework.beans.BeansException;
 
 /**
  * BeanUtils 扩展工具类，添加一些 Bean 复制的方法。

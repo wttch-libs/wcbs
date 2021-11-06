@@ -1,12 +1,11 @@
 package com.wttch.wcbs.autoconfigure;
 
+import java.util.Optional;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
-
-import java.util.Optional;
 
 /**
  * spring context 帮助类，项目启动时自动注入静态的 ApplicationContext 到该类中，方便后续直接调用 ApplicationContext。
