@@ -4,11 +4,12 @@ server:
     context-path: /
 spring:
   datasource:
-    url: jdbc:mysql://localhost:10002/iam?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&allowPublicKeyRetrieval=true&useSSL=false
+    url: jdbc:mysql://rm-bp1o4cee732db9nxblo.mysql.rds.aliyuncs.com:3306/iam
     username: iam
-    password: iam
+    password: iam_Wttch96
+    driver-class-name: com.mysql.cj.jdbc.Driver
 
 wttch:
   wcbs:
     init-sql-path:
-      - classpath:modify-sql/*.sql
+      # - classpath:modify-sql/*.sql
