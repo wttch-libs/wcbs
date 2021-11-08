@@ -15,7 +15,7 @@ repositories {
 dependencies {
     implementation(Spring.Boot.starter)
     implementation(Mybatis.springBoot) {
-
+        excludeTxAndJdbc()
     }
     implementation(Mysql.connector)
 
