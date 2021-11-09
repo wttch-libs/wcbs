@@ -10,7 +10,7 @@ import lombok.Getter;
  */
 @Getter
 @AllArgsConstructor
-public enum ErrorCodeSource {
+enum ErrorCodeSource {
   /** 用户错误 */
   USER('A'),
   /** 系统错误 */

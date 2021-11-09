@@ -18,6 +18,8 @@ dependencies {
         excludeTxAndJdbc()
     }
     implementation(Mysql.connector)
+    implementation(Spring.Boot.starterWeb)
+    implementation(project(":wcbs-web"))
 
     implementation(project(":wcbs-spring-boot-starter"))
 
