@@ -3,7 +3,7 @@ import com.wttch.plugin.libs.dependencies.Jetbrains
 import com.wttch.plugin.libs.dependencies.Spring
 
 dependencies {
-    implementation(Jetbrains.annotations)
+    api(Jetbrains.annotations)
 
     implementation("com.wttch:common:0.1-SNAPSHOT")
 
