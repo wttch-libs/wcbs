@@ -1,5 +1,6 @@
 package com.wttch.wcbs.mybatis;
 
+import com.wttch.wcbs.mybatis.aspect.AssignDataSourceMethodAspect;
 import com.wttch.wcbs.mybatis.property.MultipleDataSourceProperty;
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
@@ -35,5 +36,11 @@ public class MultipleDataSourceAutoConfiguration {
     multipleRoutingDataSource.setProvider(provider);
     multipleRoutingDataSource.setPrimary(multipleDataSourceProperty.getPrimary());
     return multipleRoutingDataSource;
+  }
+
+  @Bean
+  @ConditionalOnMissingBean
+  public AssignDataSourceMethodAspect assignDataSourceMethodAspect() {
+    return new AssignDataSourceMethodAspect();
   }
 }

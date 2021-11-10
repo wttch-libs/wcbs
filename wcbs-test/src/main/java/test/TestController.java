@@ -9,11 +9,12 @@ import javax.annotation.Resource;
 
 @RestController
 public class TestController {
-  @Resource
-  MultipleDataSourceProperty multipleDataSourceProperty;
+  @Resource MultipleDataSourceProperty multipleDataSourceProperty;
+  @Resource TestMapper testMapper;
 
   @GetMapping("/test")
   public RespWrapper<String> test() {
+    testMapper.test();
     return RespWrapper.ok("ok");
   }
 }

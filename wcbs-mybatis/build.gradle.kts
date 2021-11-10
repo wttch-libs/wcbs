@@ -6,6 +6,7 @@ dependencies {
     implementation(Mybatis.springBoot) {
         excludeTxAndJdbc()
     }
+    implementation("org.springframework.boot:spring-boot-starter-aop:2.5.2")
     implementation(project(":wcbs-core"))
     compileOnly(Spring.Boot.configurationProcessor)
     annotationProcessor(Spring.Boot.configurationProcessor)
