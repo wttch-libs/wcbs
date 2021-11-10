@@ -6,7 +6,10 @@ dependencies {
     implementation(Mybatis.springBoot) {
         excludeTxAndJdbc()
     }
+    implementation(project(":wcbs-core"))
     compileOnly(Spring.Boot.configurationProcessor)
     annotationProcessor(Spring.Boot.configurationProcessor)
     compileOnly(Alibaba.druid)
+    compileOnly(Spring.Boot.starterJdbc)
+    compileOnly(Spring.Boot.starterWeb)
 }

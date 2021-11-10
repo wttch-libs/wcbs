@@ -17,7 +17,6 @@ import org.springframework.boot.context.properties.NestedConfigurationProperty;
 @Setter
 public class DataSourceProperty {
   private String name;
-  private String type;
   private String driverClassName;
   private String url;
   private String username;

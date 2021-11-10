@@ -14,5 +14,5 @@ import org.springframework.boot.context.properties.NestedConfigurationProperty;
 @Setter
 @NoArgsConstructor
 public class DruidWallFilter {
-  @NestedConfigurationProperty private DruidWallConfig config;
+  @NestedConfigurationProperty private DruidWallConfig config = new DruidWallConfig();
 }

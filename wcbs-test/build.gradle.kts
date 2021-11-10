@@ -19,6 +19,8 @@ dependencies {
     }
     implementation(Mysql.connector)
     implementation(Spring.Boot.starterWeb)
+
+    implementation(com.wttch.plugin.libs.dependencies.Alibaba.druid)
     implementation(project(":wcbs-web"))
 
     implementation(project(":wcbs-spring-boot-starter"))

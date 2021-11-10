@@ -17,7 +17,7 @@ public class DruidWebStatFilter {
   private boolean enabled;
 
   private String urlPattern;
-  private String exclusions;
+  private String exclusions = "*.js,*.gif,*.jpg,*.bmp,*.png,*.css,*.ico,/druid/*";
   private String sessionStatMaxCount;
   private String sessionStatEnable;
   private String principalSessionName;

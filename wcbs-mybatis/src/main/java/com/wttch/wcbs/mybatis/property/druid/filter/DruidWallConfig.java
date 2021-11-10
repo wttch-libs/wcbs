@@ -14,5 +14,5 @@ import lombok.Setter;
 @NoArgsConstructor
 public class DruidWallConfig {
   /** 一次执行多条sql */
-  private Boolean multiStatementAllow;
+  private Boolean multiStatementAllow = false;
 }

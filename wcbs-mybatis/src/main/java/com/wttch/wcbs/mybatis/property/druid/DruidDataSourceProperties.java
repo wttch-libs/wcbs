@@ -2,6 +2,7 @@ package com.wttch.wcbs.mybatis.property.druid;
 
 import com.wttch.wcbs.mybatis.property.druid.filter.DruidFilter;
 import com.wttch.wcbs.mybatis.property.druid.filter.DruidWebStatFilter;
+import java.util.Properties;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -16,6 +17,7 @@ import org.springframework.boot.context.properties.NestedConfigurationProperty;
 @Setter
 @NoArgsConstructor
 public class DruidDataSourceProperties {
+  private Boolean enable = false;
   /** 初始连接数 */
   private Integer initialSize = 5;
   /** 最小连接池数量 */
@@ -42,14 +44,23 @@ public class DruidDataSourceProperties {
 
   /** 连接出错后再尝试连接次数 */
   private Integer connectionErrorRetryAttempts = 3;
-
   /**
    * true表示pool向数据库请求连接失败后标记整个pool为block并close，就算后端数据库恢复正常也不进行重连，客户端对pool的请求都拒绝掉。false表示不会标记
    * pool为block，新的请求都会尝试去数据库请求connection。默认为false。因此，如果想让数据库和网络故障恢复之后，pool能继续请求正常资源必须把此项配置设为false
    */
   private Boolean breakAfterAcquireFailure = false;
 
-  @NestedConfigurationProperty private DruidFilter filter;
+  private Integer validationQueryTimeout = -1;
+  private Boolean poolPreparedStatements = false;
+  private Integer maxOpenPreparedStatements = -1;
+  private Boolean sharePreparedStatements = false;
+  private Properties connectionProperties;
+  private String filters = "stat,wall";
+  private String webStatFilterExclusions = "*.js,*.gif,*.jpg,*.bmp,*.png,*.css,*.ico,/druid/*";
+  private Boolean removeAbandoned = false;
+  private Long removeAbandonedTimeoutMillis = 300000L;
+
+  @NestedConfigurationProperty private DruidFilter filter = new DruidFilter();
 
   @NestedConfigurationProperty private DruidWebStatFilter webStatFilter;
   @NestedConfigurationProperty private DruidStatViewServlet statViewServlet;
