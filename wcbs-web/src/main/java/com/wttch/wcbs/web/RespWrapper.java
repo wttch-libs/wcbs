@@ -4,14 +4,12 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.wttch.wcbs.web.error.ErrorCode;
 import com.wttch.wcbs.web.error.ErrorCodes;
 import com.wttch.wcbs.web.serializer.ErrorCodeSerializer;
-import lombok.Getter;
-import lombok.Setter;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
+import lombok.Getter;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * 统一的响应实体类

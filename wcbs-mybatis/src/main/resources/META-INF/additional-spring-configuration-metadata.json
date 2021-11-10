@@ -1,0 +1,15 @@
+{
+  "groups": [
+    {
+      "name": "wttch.data.database",
+      "type": "com.wttch.wcbs.mybatis.property.MultipleDataSourceProperty"
+    }
+  ],
+  "properties": [
+    {
+      "name": "wttch.data.database.connection",
+      "type": "com.wttch.wcbs.mybatis.property.DataSourceProperty[]",
+      "sourceType": "com.wttch.wcbs.mybatis.property.MultipleDataSourceProperty"
+    }
+  ]
+}
