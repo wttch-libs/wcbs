@@ -111,6 +111,10 @@ tasks.register("publishAll") {
         println("开始发布快照")
     }
     dependsOn(":wcbs-core:publish")
+    dependsOn(":wcbs-data-jdbc:publish")
+    dependsOn(":wcbs-data-mybatis:publish")
+    dependsOn(":wcbs-data-mybatis-spring-boot-starter:publish")
+    dependsOn(":wcbs-web:publish")
     dependsOn(":wcbs-spring-boot-autoconfigure:publish")
     dependsOn(":wcbs-spring-boot-starter:publish")
     doLast {

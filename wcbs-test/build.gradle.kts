@@ -1,4 +1,3 @@
-import com.wttch.plugin.libs.dependencies.Mybatis
 import com.wttch.plugin.libs.dependencies.Mysql
 import com.wttch.plugin.libs.dependencies.Spring
 
@@ -22,7 +21,7 @@ dependencies {
 
     implementation(project(":wcbs-spring-boot-starter"))
 
-    implementation(project(":wcbs-mybatis-spring-boot-starter"))
+    implementation(project(":wcbs-data-mybatis-spring-boot-starter"))
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.1")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.8.1")

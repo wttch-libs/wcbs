@@ -2,7 +2,7 @@ import com.wttch.plugin.libs.dependencies.Spring
 
 dependencies {
     api(project(":wcbs-core"))
-    api(project(":wcbs-mybatis"))
+    api(project(":wcbs-data-mybatis"))
     api(com.wttch.plugin.libs.dependencies.Mybatis.springBoot) {
         excludeSpringJdbc()
     }

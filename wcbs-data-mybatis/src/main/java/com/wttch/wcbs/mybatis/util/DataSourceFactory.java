@@ -6,14 +6,13 @@ import com.wttch.wcbs.mybatis.property.druid.DruidConfigDataSource;
 import com.wttch.wcbs.mybatis.property.druid.DruidDataSourceProperties;
 import com.wttch.wcbs.mybatis.property.hikari.HikariDataSourceProperties;
 import com.zaxxer.hikari.HikariDataSource;
+import java.sql.SQLException;
+import java.util.Objects;
+import javax.sql.DataSource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.jdbc.datasource.SimpleDriverDataSource;
-
-import javax.sql.DataSource;
-import java.sql.SQLException;
-import java.util.Objects;
 
 /**
  * 数据库源工厂，会配置对应的数据库连接池

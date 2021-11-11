@@ -1,9 +1,8 @@
 package com.wttch.wcbs.mybatis.property;
 
+import com.wttch.wcbs.core.exception.FrameworkException;
 import java.util.*;
 import java.util.stream.Collectors;
-
-import com.wttch.wcbs.core.exception.FrameworkException;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

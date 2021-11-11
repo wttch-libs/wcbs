@@ -1,13 +1,11 @@
 package com.wttch.wcbs.mybatis;
 
-import com.wttch.wcbs.core.exception.FrameworkException;
 import com.wttch.wcbs.mybatis.property.MultipleDataSourceProperty;
 import com.wttch.wcbs.mybatis.util.DataSourceFactory;
-import lombok.AllArgsConstructor;
-
-import javax.sql.DataSource;
 import java.util.HashMap;
 import java.util.Map;
+import javax.sql.DataSource;
+import lombok.AllArgsConstructor;
 
 /**
  * yml 多数据源配置供应器
