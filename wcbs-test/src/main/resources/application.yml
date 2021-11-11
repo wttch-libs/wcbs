@@ -16,6 +16,9 @@ wttch:
         username: iam
         password: iam_Wttch96
         driver-class-name: com.mysql.cj.jdbc.Driver
+        hikari:
+          auto-commit: true
+          max-lifetime: 60000
       db1:
         name: iam2
         url: jdbc:mysql://rm-bp1o4cee732db9nxblo.mysql.rds.aliyuncs.com:3306/iam
@@ -23,7 +26,6 @@ wttch:
         password: iam_Wttch96
         driver-class-name: com.mysql.cj.jdbc.Driver
         druid:
-          enable: true
           initial-size: 10
           filter:
             wall:

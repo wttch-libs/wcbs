@@ -1,8 +1,8 @@
-package com.wttch.wcbs.jdbc.util;
+package com.wttch.wcbs.jdbc.durid;
 
 import com.alibaba.druid.wall.WallConfig;
 import com.alibaba.druid.wall.WallFilter;
-import com.wttch.wcbs.jdbc.property.druid.filter.DruidWallFilter;
+import com.wttch.wcbs.jdbc.durid.filter.DruidWallFilter;
 import org.springframework.beans.BeanUtils;
 
 /**

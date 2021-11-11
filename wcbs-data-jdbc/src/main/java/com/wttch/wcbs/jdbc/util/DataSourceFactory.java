@@ -1,10 +1,11 @@
 package com.wttch.wcbs.jdbc.util;
 
 import com.wttch.wcbs.core.exception.FrameworkException;
-import com.wttch.wcbs.jdbc.property.DataSourceProperty;
-import com.wttch.wcbs.jdbc.property.druid.DruidConfigDataSource;
-import com.wttch.wcbs.jdbc.property.druid.DruidDataSourceProperties;
-import com.wttch.wcbs.jdbc.property.hikari.HikariDataSourceProperties;
+import com.wttch.wcbs.jdbc.config.DataSourceProperty;
+import com.wttch.wcbs.jdbc.durid.DruidConfigDataSource;
+import com.wttch.wcbs.jdbc.durid.DruidDataSourceProperties;
+import com.wttch.wcbs.jdbc.durid.FilterConvertor;
+import com.wttch.wcbs.jdbc.hikari.HikariDataSourceProperties;
 import com.zaxxer.hikari.HikariDataSource;
 import java.sql.SQLException;
 import java.util.Objects;
@@ -28,7 +29,7 @@ public class DataSourceFactory {
 
   public static DataSource createDataSource(
       String dataSourceKey, DataSourceProperty dataSourceProperty) {
-    if (dataSourceProperty.getDruid().getEnable()) {
+    if (Objects.nonNull(dataSourceProperty.getDruid())) {
       try {
         Class.forName(DRUID_DATASOURCE);
         return createDruidDataSource(dataSourceProperty);

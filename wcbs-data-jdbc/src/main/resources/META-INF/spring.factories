@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  com.wttch.wcbs.mybatis.MultipleDataSourceAutoConfiguration
+  com.wttch.wcbs.jdbc.config.MultipleDataSourceAutoConfiguration

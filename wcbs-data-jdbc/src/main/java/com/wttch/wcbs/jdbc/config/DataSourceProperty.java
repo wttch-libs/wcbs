@@ -1,7 +1,7 @@
-package com.wttch.wcbs.jdbc.property;
+package com.wttch.wcbs.jdbc.config;
 
-import com.wttch.wcbs.jdbc.property.druid.DruidDataSourceProperties;
-import com.wttch.wcbs.jdbc.property.hikari.HikariDataSourceProperties;
+import com.wttch.wcbs.jdbc.durid.DruidDataSourceProperties;
+import com.wttch.wcbs.jdbc.hikari.HikariDataSourceProperties;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -22,9 +22,7 @@ public class DataSourceProperty {
   private String username;
   private String password;
 
-  @NestedConfigurationProperty
-  private HikariDataSourceProperties hikari = new HikariDataSourceProperties();
+  @NestedConfigurationProperty private HikariDataSourceProperties hikari;
 
-  @NestedConfigurationProperty
-  private DruidDataSourceProperties druid = new DruidDataSourceProperties();
+  @NestedConfigurationProperty private DruidDataSourceProperties druid;
 }

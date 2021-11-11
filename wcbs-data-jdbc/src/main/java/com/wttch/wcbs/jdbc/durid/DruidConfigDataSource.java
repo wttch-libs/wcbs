@@ -1,4 +1,4 @@
-package com.wttch.wcbs.jdbc.property.druid;
+package com.wttch.wcbs.jdbc.durid;
 
 import com.alibaba.druid.filter.Filter;
 import com.alibaba.druid.pool.DruidDataSource;

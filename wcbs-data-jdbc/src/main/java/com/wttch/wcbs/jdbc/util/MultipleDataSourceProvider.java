@@ -1,4 +1,4 @@
-package com.wttch.wcbs.jdbc;
+package com.wttch.wcbs.jdbc.util;
 
 import java.util.Map;
 import javax.sql.DataSource;

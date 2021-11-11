@@ -1,9 +1,9 @@
-package com.wttch.wcbs.mybatis;
+package com.wttch.wcbs.jdbc.config;
 
-import com.wttch.wcbs.jdbc.MultipleDataSourceProvider;
-import com.wttch.wcbs.jdbc.YamlMultipleDataSourceProvider;
-import com.wttch.wcbs.mybatis.aspect.AssignDataSourceMethodAspect;
-import com.wttch.wcbs.jdbc.property.MultipleDataSourceProperty;
+import com.wttch.wcbs.jdbc.aspect.AssignDataSourceMethodAspect;
+import com.wttch.wcbs.jdbc.util.MultipleDataSourceProvider;
+import com.wttch.wcbs.jdbc.util.MultipleRoutingDataSource;
+import com.wttch.wcbs.jdbc.util.YamlMultipleDataSourceProvider;
 import javax.annotation.Resource;
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;

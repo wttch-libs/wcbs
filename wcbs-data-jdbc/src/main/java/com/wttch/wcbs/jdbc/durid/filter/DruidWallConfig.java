@@ -1,4 +1,4 @@
-package com.wttch.wcbs.jdbc.property.druid.filter;
+package com.wttch.wcbs.jdbc.durid.filter;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

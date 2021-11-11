@@ -1,7 +1,7 @@
-package com.wttch.wcbs.jdbc.property.druid;
+package com.wttch.wcbs.jdbc.durid;
 
-import com.wttch.wcbs.jdbc.property.druid.filter.DruidFilter;
-import com.wttch.wcbs.jdbc.property.druid.filter.DruidWebStatFilter;
+import com.wttch.wcbs.jdbc.durid.filter.DruidFilter;
+import com.wttch.wcbs.jdbc.durid.filter.DruidWebStatFilter;
 import java.util.Properties;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,7 +17,6 @@ import org.springframework.boot.context.properties.NestedConfigurationProperty;
 @Setter
 @NoArgsConstructor
 public class DruidDataSourceProperties {
-  private Boolean enable = false;
   /** 初始连接数 */
   private Integer initialSize = 5;
   /** 最小连接池数量 */

@@ -19,7 +19,7 @@ public class DataSourceContextHelper {
     CONTEXT.set(name);
   }
 
-  public static void clear() {
+  public static void restore() {
     CONTEXT.remove();
   }
 

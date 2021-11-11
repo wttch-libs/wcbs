@@ -1,4 +1,4 @@
-package com.wttch.wcbs.jdbc.property;
+package com.wttch.wcbs.jdbc.config;
 
 import com.wttch.wcbs.core.exception.FrameworkException;
 import java.util.*;

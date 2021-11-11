@@ -1,4 +1,4 @@
-package com.wttch.wcbs.jdbc.property.hikari;
+package com.wttch.wcbs.jdbc.hikari;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

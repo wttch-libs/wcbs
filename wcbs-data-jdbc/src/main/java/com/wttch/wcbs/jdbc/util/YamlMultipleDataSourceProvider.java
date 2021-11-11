@@ -1,7 +1,6 @@
-package com.wttch.wcbs.jdbc;
+package com.wttch.wcbs.jdbc.util;
 
-import com.wttch.wcbs.jdbc.property.MultipleDataSourceProperty;
-import com.wttch.wcbs.jdbc.util.DataSourceFactory;
+import com.wttch.wcbs.jdbc.config.MultipleDataSourceProperty;
 import java.util.HashMap;
 import java.util.Map;
 import javax.sql.DataSource;
