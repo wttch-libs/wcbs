@@ -2,14 +2,35 @@ server:
   port: 18080
   servlet:
     context-path: /
-spring:
-  datasource:
-    url: jdbc:mysql://rm-bp1o4cee732db9nxblo.mysql.rds.aliyuncs.com:3306/iam
-    username: iam
-    password: iam_Wttch96
-    driver-class-name: com.mysql.cj.jdbc.Driver
 
 wttch:
   wcbs:
     init-sql-path:
-      # - classpath:modify-sql/*.sql
+    # - classpath:modify-sql/*.sql
+  data:
+    database:
+      primary: iam
+      db0:
+        name: iam
+        url: jdbc:mysql://rm-bp1o4cee732db9nxblo.mysql.rds.aliyuncs.com:3306/iam
+        username: iam
+        password: iam_Wttch96
+        driver-class-name: com.mysql.cj.jdbc.Driver
+      db1:
+        name: iam2
+        url: jdbc:mysql://rm-bp1o4cee732db9nxblo.mysql.rds.aliyuncs.com:3306/iam
+        username: iam
+        password: iam_Wttch96
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        druid:
+          enable: true
+          initial-size: 10
+          filter:
+            wall:
+              config:
+                multi-statement-allow: true
+logging:
+  level:
+    com.wttch: debug
+mybatis:
+  mapper-locations: classpath:/mapper/*.xml

@@ -1,15 +1,3 @@
-# 模板库
+# wcbs
 
-方便下载后直接开启新的项目
-
-## 1. Github Action
-
-可以通过拷贝 .github-template 到 .github 来添加一些 github action
-
-## 2. 快照版本
-
-快照的发布可以不使用签名直接进行发布，具体版本号请在子模块中设置
-
-## 3. 正式版本
-
-正式版本请在本地发布，需要将签名证书放在根路径下，并在 gradle.properties 中配置相关账号密码和证书路径
+* (Wttch Common Base System) 随手搞的一个小的通用框架。为了方便以后的springBoot Web应用的开发，将一些常用的功能提取出来做成易用的框架。
