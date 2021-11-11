@@ -1,4 +1,4 @@
-package com.wttch.wcbs.mybatis.annotations;
+package com.wttch.wcbs.jdbc.annotations;
 
 import java.lang.annotation.*;
 

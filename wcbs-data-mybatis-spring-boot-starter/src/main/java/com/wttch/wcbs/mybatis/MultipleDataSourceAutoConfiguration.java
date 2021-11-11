@@ -1,7 +1,9 @@
 package com.wttch.wcbs.mybatis;
 
+import com.wttch.wcbs.jdbc.MultipleDataSourceProvider;
+import com.wttch.wcbs.jdbc.YamlMultipleDataSourceProvider;
 import com.wttch.wcbs.mybatis.aspect.AssignDataSourceMethodAspect;
-import com.wttch.wcbs.mybatis.property.MultipleDataSourceProperty;
+import com.wttch.wcbs.jdbc.property.MultipleDataSourceProperty;
 import javax.annotation.Resource;
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;

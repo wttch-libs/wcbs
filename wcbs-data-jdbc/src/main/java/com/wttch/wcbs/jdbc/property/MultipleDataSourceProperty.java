@@ -1,4 +1,4 @@
-package com.wttch.wcbs.mybatis.property;
+package com.wttch.wcbs.jdbc.property;
 
 import com.wttch.wcbs.core.exception.FrameworkException;
 import java.util.*;

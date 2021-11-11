@@ -1,4 +1,4 @@
-package com.wttch.wcbs.mybatis;
+package com.wttch.wcbs.jdbc;
 
 import java.util.Map;
 import javax.sql.DataSource;

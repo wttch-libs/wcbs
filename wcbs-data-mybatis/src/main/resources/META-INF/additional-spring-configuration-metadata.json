@@ -2,7 +2,7 @@
   "groups": [
     {
       "name": "wttch.data.database",
-      "type": "com.wttch.wcbs.mybatis.property.MultipleDataSourceProperty"
+      "type": "com.wttch.wcbs.jdbc.property.MultipleDataSourceProperty"
     }
   ]
 }

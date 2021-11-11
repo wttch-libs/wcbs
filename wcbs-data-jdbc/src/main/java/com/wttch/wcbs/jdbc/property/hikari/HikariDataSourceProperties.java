@@ -1,4 +1,4 @@
-package com.wttch.wcbs.mybatis.property.hikari;
+package com.wttch.wcbs.jdbc.property.hikari;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

@@ -1,7 +1,8 @@
 package com.wttch.wcbs.mybatis;
 
 import com.wttch.wcbs.core.exception.FrameworkException;
-import com.wttch.wcbs.mybatis.util.DataSourceContextHelper;
+import com.wttch.wcbs.jdbc.MultipleDataSourceProvider;
+import com.wttch.wcbs.jdbc.util.DataSourceContextHelper;
 import java.util.Map;
 import javax.sql.DataSource;
 import lombok.Getter;

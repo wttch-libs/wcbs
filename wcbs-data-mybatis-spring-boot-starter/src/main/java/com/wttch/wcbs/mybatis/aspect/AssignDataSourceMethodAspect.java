@@ -1,7 +1,7 @@
 package com.wttch.wcbs.mybatis.aspect;
 
-import com.wttch.wcbs.mybatis.annotations.AssignDataSource;
-import com.wttch.wcbs.mybatis.util.DataSourceContextHelper;
+import com.wttch.wcbs.jdbc.annotations.AssignDataSource;
+import com.wttch.wcbs.jdbc.util.DataSourceContextHelper;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.After;

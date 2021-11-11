@@ -1,6 +1,6 @@
 package test;
 
-import com.wttch.wcbs.mybatis.property.DataSourceProperty;
+import com.wttch.wcbs.jdbc.property.DataSourceProperty;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

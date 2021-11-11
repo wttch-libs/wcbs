@@ -1,7 +1,7 @@
-package com.wttch.wcbs.mybatis.property;
+package com.wttch.wcbs.jdbc.property;
 
-import com.wttch.wcbs.mybatis.property.druid.DruidDataSourceProperties;
-import com.wttch.wcbs.mybatis.property.hikari.HikariDataSourceProperties;
+import com.wttch.wcbs.jdbc.property.druid.DruidDataSourceProperties;
+import com.wttch.wcbs.jdbc.property.hikari.HikariDataSourceProperties;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

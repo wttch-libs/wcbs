@@ -1,7 +1,7 @@
-package com.wttch.wcbs.mybatis.property.druid;
+package com.wttch.wcbs.jdbc.property.druid;
 
-import com.wttch.wcbs.mybatis.property.druid.filter.DruidFilter;
-import com.wttch.wcbs.mybatis.property.druid.filter.DruidWebStatFilter;
+import com.wttch.wcbs.jdbc.property.druid.filter.DruidFilter;
+import com.wttch.wcbs.jdbc.property.druid.filter.DruidWebStatFilter;
 import java.util.Properties;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

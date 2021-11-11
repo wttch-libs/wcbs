@@ -1,4 +1,4 @@
-package com.wttch.wcbs.mybatis.util;
+package com.wttch.wcbs.jdbc.util;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.lang.Nullable;

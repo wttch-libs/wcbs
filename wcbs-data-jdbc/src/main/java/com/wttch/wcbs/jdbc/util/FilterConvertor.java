@@ -1,8 +1,8 @@
-package com.wttch.wcbs.mybatis.util;
+package com.wttch.wcbs.jdbc.util;
 
 import com.alibaba.druid.wall.WallConfig;
 import com.alibaba.druid.wall.WallFilter;
-import com.wttch.wcbs.mybatis.property.druid.filter.DruidWallFilter;
+import com.wttch.wcbs.jdbc.property.druid.filter.DruidWallFilter;
 import org.springframework.beans.BeanUtils;
 
 /**

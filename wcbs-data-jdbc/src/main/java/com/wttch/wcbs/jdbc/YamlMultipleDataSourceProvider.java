@@ -1,7 +1,7 @@
-package com.wttch.wcbs.mybatis;
+package com.wttch.wcbs.jdbc;
 
-import com.wttch.wcbs.mybatis.property.MultipleDataSourceProperty;
-import com.wttch.wcbs.mybatis.util.DataSourceFactory;
+import com.wttch.wcbs.jdbc.property.MultipleDataSourceProperty;
+import com.wttch.wcbs.jdbc.util.DataSourceFactory;
 import java.util.HashMap;
 import java.util.Map;
 import javax.sql.DataSource;
