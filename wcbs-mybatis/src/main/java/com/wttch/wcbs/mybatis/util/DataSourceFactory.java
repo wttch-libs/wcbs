@@ -1,21 +1,19 @@
 package com.wttch.wcbs.mybatis.util;
 
-import com.alibaba.druid.pool.DruidDataSource;
-import com.alibaba.druid.wall.WallConfig;
-import com.alibaba.druid.wall.WallFilter;
 import com.wttch.wcbs.core.exception.FrameworkException;
 import com.wttch.wcbs.mybatis.property.DataSourceProperty;
 import com.wttch.wcbs.mybatis.property.druid.DruidConfigDataSource;
 import com.wttch.wcbs.mybatis.property.druid.DruidDataSourceProperties;
 import com.wttch.wcbs.mybatis.property.hikari.HikariDataSourceProperties;
 import com.zaxxer.hikari.HikariDataSource;
-import java.sql.SQLException;
-import java.util.Objects;
-import java.util.Optional;
-import javax.sql.DataSource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.boot.jdbc.DataSourceBuilder;
+import org.springframework.jdbc.datasource.SimpleDriverDataSource;
+
+import javax.sql.DataSource;
+import java.sql.SQLException;
+import java.util.Objects;
 
 /**
  * 数据库源工厂，会配置对应的数据库连接池
@@ -58,6 +56,7 @@ public class DataSourceFactory {
           .username(dataSourceProperty.getUsername())
           .password(dataSourceProperty.getPassword())
           .driverClassName(dataSourceProperty.getDriverClassName())
+          .type(SimpleDriverDataSource.class)
           .build();
     } catch (ClassNotFoundException ex) {
       log.error("无法使用spring boot 默认的数据源，因为依赖不存在.");

@@ -7,8 +7,8 @@ import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
-import org.springframework.web.context.support.GenericWebApplicationContext;
 
 import javax.sql.DataSource;
 import java.util.Map;
@@ -20,7 +20,7 @@ public class MultipleRoutingDataSource extends AbstractRoutingDataSource {
   @Setter private MultipleDataSourceProvider provider;
   @Setter private String primary;
 
-  @Autowired private GenericWebApplicationContext context;
+  @Autowired private ConfigurableApplicationContext context;
 
   @Override
   protected Object determineCurrentLookupKey() {

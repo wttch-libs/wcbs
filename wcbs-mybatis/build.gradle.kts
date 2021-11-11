@@ -1,16 +1,16 @@
-import com.wttch.plugin.libs.dependencies.Mybatis
-import com.wttch.plugin.libs.dependencies.Alibaba
-import com.wttch.plugin.libs.dependencies.Spring
+import com.wttch.plugin.libs.dependencies.*
 
 dependencies {
-    implementation(Mybatis.springBoot) {
-        excludeTxAndJdbc()
-    }
-    implementation("org.springframework.boot:spring-boot-starter-aop:2.5.2")
     implementation(project(":wcbs-core"))
+    implementation(Mybatis.springBoot) {
+        excludeSpringJdbc()
+    }
+    implementation(Spring.jdbc)
+
     compileOnly(Spring.Boot.configurationProcessor)
     annotationProcessor(Spring.Boot.configurationProcessor)
+    
+    // 依赖两个数据库连接池，如果配置了但是使用的时候没有依赖就会忽略数据库连接池的配置
     compileOnly(Alibaba.druid)
-    compileOnly(Spring.Boot.starterJdbc)
-    compileOnly(Spring.Boot.starterWeb)
+    compileOnly(HikariCP.hikariCP)
 }

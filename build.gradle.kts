@@ -21,7 +21,7 @@ repositories {
 
 buildscript {
     dependencies {
-        classpath("com.wttch.plugin:libs:1.0.1.0002-SNAPSHOT")
+        classpath("com.wttch.plugin:libs:1.0.1.0005-SNAPSHOT")
     }
 
     repositories {
