@@ -75,7 +75,7 @@ subprojects {
     }
 
     group = "com.wttch"
-    version = "0.1.1.0003-SNAPSHOT"
+    version = "0.1.1.0004-SNAPSHOT"
 
     publishing {
         publications {
@@ -113,7 +113,6 @@ tasks.register("publishAll") {
     dependsOn(":wcbs-core:publish")
     dependsOn(":wcbs-data-jdbc:publish")
     dependsOn(":wcbs-data-mybatis:publish")
-    dependsOn(":wcbs-data-mybatis-spring-boot-starter:publish")
     dependsOn(":wcbs-web:publish")
     dependsOn(":wcbs-spring-boot-autoconfigure:publish")
     dependsOn(":wcbs-spring-boot-starter:publish")
