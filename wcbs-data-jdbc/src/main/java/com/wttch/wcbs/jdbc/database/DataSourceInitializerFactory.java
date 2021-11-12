@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import javax.sql.DataSource;
 import lombok.extern.slf4j.Slf4j;
@@ -22,6 +23,7 @@ public class DataSourceInitializerFactory {
       String dataSourceName,
       DataSource dataSource,
       List<String> initSqlPath) {
+    initSqlPath = Optional.ofNullable(initSqlPath).orElse(List.of());
     var initializer = new DataSourceInitializer();
     var populator = new ResourceDatabasePopulator();
     populator.setSeparator(";;");

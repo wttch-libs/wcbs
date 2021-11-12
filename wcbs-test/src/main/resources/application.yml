@@ -4,9 +4,6 @@ server:
     context-path: /
 
 wttch:
-  wcbs:
-    init-sql-path:
-    # - classpath:modify-sql/*.sql
   data:
     database:
       primary: iam
@@ -19,6 +16,8 @@ wttch:
         hikari:
           auto-commit: true
           max-lifetime: 60000
+        load-function: true
+        init-sql-path: classpath:/init/*.sql
       db1:
         name: iam2
         url: jdbc:mysql://rm-bp1o4cee732db9nxblo.mysql.rds.aliyuncs.com:3306/iam

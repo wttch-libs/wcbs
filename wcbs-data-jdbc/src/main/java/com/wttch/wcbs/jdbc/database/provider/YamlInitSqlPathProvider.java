@@ -40,7 +40,8 @@ public class YamlInitSqlPathProvider implements InitSqlPathProvider {
         MapUtils.mapTo(
             multipleDataSourceProperty.dataSourceMap(), DataSourceProperty::getDriverClassName);
     for (var key : initSqlPathMap.keySet()) {
-      if (sqlFunctionLoadPredicateMap.getOrDefault(key, false)) {
+      if (sqlFunctionLoadPredicateMap.containsKey(key)
+          && Boolean.TRUE.equals(sqlFunctionLoadPredicateMap.get(key))) {
         var driver = driverMap.get(key);
         if (Objects.nonNull(driver)) {
           initSqlPathMap.get(key).add(0, driverClassName2FunctionPathMap.get(driver));

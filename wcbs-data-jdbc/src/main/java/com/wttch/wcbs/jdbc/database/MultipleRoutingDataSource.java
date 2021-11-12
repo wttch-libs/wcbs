@@ -63,10 +63,10 @@ public class MultipleRoutingDataSource extends AbstractRoutingDataSource {
             var populatorBeanName = "DatabasePopulator-" + name;
             applicationContext
                 .getBeanFactory()
-                .registerSingleton(
-                    populatorBeanName,
+                .initializeBean(
                     DataSourceInitializerFactory.createInitializer(
-                        applicationContext, name, dataSource, initSqlPathMap.get(name)));
+                        applicationContext, name, dataSource, initSqlPathMap.get(name)),
+                    populatorBeanName);
           }
           log.debug("加载[{}]数据源:[{}]", dataSource.getClass().getSimpleName(), beanName);
         });
