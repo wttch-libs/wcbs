@@ -41,9 +41,11 @@ public class MultipleDataSourceAutoConfiguration {
 
   @Bean
   @Primary
-  public MultipleRoutingDataSource multipleRoutingDataSource(MultipleDataSourceProvider provider) {
+  public MultipleRoutingDataSource multipleRoutingDataSource(
+      MultipleDataSourceProvider provider, InitSqlPathProvider initSqlPathProvider) {
     var multipleRoutingDataSource = new MultipleRoutingDataSource();
     multipleRoutingDataSource.setProvider(provider);
+    multipleRoutingDataSource.setInitSqlPathProvider(initSqlPathProvider);
     multipleRoutingDataSource.setPrimary(multipleDataSourceProperty.getPrimary());
     return multipleRoutingDataSource;
   }
