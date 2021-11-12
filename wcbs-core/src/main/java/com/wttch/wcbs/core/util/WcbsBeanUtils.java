@@ -1,4 +1,4 @@
-package com.wttch.wcbs.autoconfigure.util;
+package com.wttch.wcbs.core.util;
 
 import java.beans.PropertyDescriptor;
 import java.util.HashSet;

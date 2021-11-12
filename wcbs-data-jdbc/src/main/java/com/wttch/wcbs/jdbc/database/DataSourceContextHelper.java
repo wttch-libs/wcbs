@@ -1,4 +1,4 @@
-package com.wttch.wcbs.jdbc.util;
+package com.wttch.wcbs.jdbc.database;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.lang.Nullable;

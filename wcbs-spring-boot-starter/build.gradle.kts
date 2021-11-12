@@ -1,3 +1,3 @@
 dependencies {
-    api(project(":wcbs-spring-boot-autoconfigure"))
+    api(project(":wcbs-data-mybatis"))
 }

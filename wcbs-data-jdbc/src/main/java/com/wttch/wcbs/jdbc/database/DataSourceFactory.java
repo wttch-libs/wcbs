@@ -1,4 +1,4 @@
-package com.wttch.wcbs.jdbc.util;
+package com.wttch.wcbs.jdbc.database;
 
 import com.wttch.wcbs.core.exception.FrameworkException;
 import com.wttch.wcbs.jdbc.config.DataSourceProperty;

@@ -1,7 +1,7 @@
 package com.wttch.wcbs.jdbc.aspect;
 
 import com.wttch.wcbs.jdbc.annotations.AssignDataSource;
-import com.wttch.wcbs.jdbc.util.DataSourceContextHelper;
+import com.wttch.wcbs.jdbc.database.DataSourceContextHelper;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 

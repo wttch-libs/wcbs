@@ -1,6 +1,8 @@
-package com.wttch.wcbs.jdbc.util;
+package com.wttch.wcbs.jdbc.database;
 
 import com.wttch.wcbs.core.exception.FrameworkException;
+import com.wttch.wcbs.jdbc.database.provider.InitSqlPathProvider;
+import com.wttch.wcbs.jdbc.database.provider.MultipleDataSourceProvider;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
@@ -25,6 +27,8 @@ public class MultipleRoutingDataSource extends AbstractRoutingDataSource {
   @Getter private Map<String, DataSource> dataSourceMap;
   /** 多数据的提供者 */
   @Setter private MultipleDataSourceProvider provider;
+  /** 多数据源初始化sql路径提供器 */
+  @Setter private InitSqlPathProvider initSqlPathProvider;
   /** 主数据源 key */
   @Setter private String primary;
 
@@ -51,10 +55,21 @@ public class MultipleRoutingDataSource extends AbstractRoutingDataSource {
   @Override
   public void afterPropertiesSet() {
     this.dataSourceMap = this.provider.loadDataSources();
+    var initSqlPathMap = this.initSqlPathProvider.loadInitSqlPath();
     this.dataSourceMap.forEach(
         (name, dataSource) -> {
           String beanName = "DataSource-" + name;
           applicationContext.getBeanFactory().registerSingleton(beanName, beanName);
+          if (initSqlPathMap.containsKey(name)) {
+
+            var populatorBeanName = "DatabasePopulator-" + name;
+            applicationContext
+                .getBeanFactory()
+                .registerSingleton(
+                    populatorBeanName,
+                    DataSourceInitializerFactory.createInitializer(
+                        applicationContext, name, dataSource, initSqlPathMap.get(name)));
+          }
           log.debug("加载[{}]数据源:[{}]", dataSource.getClass().getSimpleName(), beanName);
         });
     log.debug("共加载 [{}] 个数据源", this.dataSourceMap.size());

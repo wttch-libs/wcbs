@@ -1,9 +1,11 @@
-package com.wttch.wcbs.jdbc.util;
+package com.wttch.wcbs.jdbc.database.provider;
 
 import com.wttch.wcbs.jdbc.config.MultipleDataSourceProperty;
 import java.util.HashMap;
 import java.util.Map;
 import javax.sql.DataSource;
+
+import com.wttch.wcbs.jdbc.database.DataSourceFactory;
 import lombok.AllArgsConstructor;
 
 /**
@@ -14,6 +16,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class YamlMultipleDataSourceProvider implements MultipleDataSourceProvider {
   private final MultipleDataSourceProperty multipleDataSourceProperty;
+
   /**
    * 加载所有的数据源
    *

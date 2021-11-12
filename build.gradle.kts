@@ -114,7 +114,6 @@ tasks.register("publishAll") {
     dependsOn(":wcbs-data-jdbc:publish")
     dependsOn(":wcbs-data-mybatis:publish")
     dependsOn(":wcbs-web:publish")
-    dependsOn(":wcbs-spring-boot-autoconfigure:publish")
     dependsOn(":wcbs-spring-boot-starter:publish")
     doLast {
         println("快照发布完成")
