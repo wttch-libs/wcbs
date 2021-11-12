@@ -8,8 +8,9 @@ import org.jetbrains.annotations.Nullable;
  *
  * @param <T> 表关联的实体类型
  * @param <K> 主键类型
+ * @author wttch
  */
-public interface CrudDAO<T, K> {
+public interface CrudMapper<T extends BaseEntity<K>, K> {
 
   /**
    * 根据主键删除，一般都是id
@@ -45,7 +46,7 @@ public interface CrudDAO<T, K> {
   int updateByPrimaryKey(T entity);
 
   /**
-   * 批量更新，根据id对数据进行批量更新，更新逻辑和 {@link #updateByPrimaryKey(Object)} 一致, 如果出现空则也会被直接更新替换.
+   * 批量更新，根据id对数据进行批量更新，更新逻辑和 {@link #updateByPrimaryKey(BaseEntity)} 一致, 如果出现空则也会被直接更新替换.
    *
    * <p>注意，如果列表为空，可能拼出错误的 sql
    *
