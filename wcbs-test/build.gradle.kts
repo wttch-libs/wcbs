@@ -14,7 +14,7 @@ repositories {
 dependencies {
     implementation(Spring.Boot.starter)
     implementation(Mysql.connector)
-    implementation(Spring.Boot.starterWeb)
+    // implementation(Spring.Boot.starterWeb)
 
     implementation(com.wttch.plugin.libs.dependencies.Alibaba.druid)
     implementation(project(":wcbs-web"))

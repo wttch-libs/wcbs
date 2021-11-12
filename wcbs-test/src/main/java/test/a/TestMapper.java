@@ -1,4 +1,4 @@
-package test;
+package test.a;
 
 import com.wttch.wcbs.jdbc.annotations.AssignDataSource;
 

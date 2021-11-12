@@ -4,6 +4,7 @@ import com.wttch.plugin.libs.dependencies.Spring
 
 dependencies {
     api(Jetbrains.annotations)
+    api(Spring.Boot.starter)
 
     implementation("com.wttch:common:0.1-SNAPSHOT")
 
