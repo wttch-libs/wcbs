@@ -1,10 +1,9 @@
 package com.wttch.wcbs.core;
 
 import com.wttch.common.util.CollectionUtils;
-import lombok.Setter;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.Resource;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -24,8 +23,7 @@ import java.util.stream.Collectors;
 public abstract class CrudService<M extends CrudMapper<T, K>, T extends BaseEntity<K>, K> {
 
   /** dao/Mapper 对象 */
-  @Setter(onMethod_ = {@Autowired})
-  protected M mapper;
+  @Resource protected M mapper;
 
   /**
    * 根据主键 id 删除

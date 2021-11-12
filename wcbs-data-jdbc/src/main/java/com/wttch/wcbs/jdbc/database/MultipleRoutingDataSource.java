@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
 
+import javax.annotation.Resource;
 import javax.sql.DataSource;
 import java.util.Map;
 
@@ -32,8 +33,7 @@ public class MultipleRoutingDataSource extends AbstractRoutingDataSource {
   /** 主数据源 key */
   @Setter private String primary;
 
-  @Setter(onMethod_ = {@Autowired})
-  private ConfigurableApplicationContext applicationContext;
+  @Resource private ConfigurableApplicationContext applicationContext;
 
   @Override
   protected Object determineCurrentLookupKey() {
