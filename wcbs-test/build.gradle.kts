@@ -14,14 +14,14 @@ repositories {
 dependencies {
     implementation(Spring.Boot.starter)
     implementation(Mysql.connector)
-    implementation(Spring.Boot.starterWeb)
+    // implementation(Spring.Boot.starterWeb)
 
     implementation(com.wttch.plugin.libs.dependencies.Alibaba.druid)
     implementation(project(":wcbs-web"))
 
     implementation(project(":wcbs-spring-boot-starter"))
 
-    implementation(project(":wcbs-data-mybatis-spring-boot-starter"))
+    implementation(project(":wcbs-data-mybatis"))
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.1")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.8.1")

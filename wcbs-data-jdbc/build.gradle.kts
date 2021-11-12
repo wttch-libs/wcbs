@@ -2,8 +2,8 @@ import com.wttch.plugin.libs.dependencies.*
 
 dependencies {
     api(project(":wcbs-core"))
-    api(Spring.jdbc)
-    compileOnly(Spring.Boot.starter)
+    api(Spring.Boot.starterJdbc)
+    api(Spring.Boot.starterAop)
 
     compileOnly(Spring.Boot.configurationProcessor)
     annotationProcessor(Spring.Boot.configurationProcessor)

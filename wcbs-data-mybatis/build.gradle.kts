@@ -1,15 +1,14 @@
-import com.wttch.plugin.libs.dependencies.*
+import com.wttch.plugin.libs.dependencies.Spring
 
 dependencies {
-    api(Mybatis.springBoot) {
+    api(project(":wcbs-core"))
+
+    api(com.wttch.plugin.libs.dependencies.Mybatis.springBoot) {
         excludeSpringJdbc()
     }
     api(project(":wcbs-data-jdbc"))
+    api(Spring.Boot.starterAop)
 
-    compileOnly(Spring.Boot.configurationProcessor)
-    annotationProcessor(Spring.Boot.configurationProcessor)
-    
-    // 依赖两个数据库连接池，如果配置了但是使用的时候没有依赖就会忽略数据库连接池的配置
-    compileOnly(Alibaba.druid)
-    compileOnly(HikariCP.hikariCP)
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.1")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.8.1")
 }
