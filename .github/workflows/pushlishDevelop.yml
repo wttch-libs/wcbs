@@ -78,4 +78,4 @@ jobs:
       - name: Make gradlew executable
         run: chmod +x ./gradlew
       - name: Publish
-        run: ./gradlew :wcbs-data-mybatis-spring-boot-starter:publish -DossrhUsername=${{ secrets.OSSRH_USERNAME }} -DossrhPassword=${{ secrets.OSSRH_PASSWORD }} --refresh-dependencies
+        run: ./gradlew publishAll -DossrhUsername=${{ secrets.OSSRH_USERNAME }} -DossrhPassword=${{ secrets.OSSRH_PASSWORD }} --refresh-dependencies
