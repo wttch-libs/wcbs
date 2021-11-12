@@ -3,17 +3,15 @@ package com.wttch.wcbs.jdbc.database;
 import com.wttch.wcbs.core.exception.FrameworkException;
 import com.wttch.wcbs.jdbc.database.provider.InitSqlPathProvider;
 import com.wttch.wcbs.jdbc.database.provider.MultipleDataSourceProvider;
+import java.util.Map;
+import javax.annotation.Resource;
+import javax.sql.DataSource;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.jetbrains.annotations.NotNull;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
-
-import javax.annotation.Resource;
-import javax.sql.DataSource;
-import java.util.Map;
 
 /**
  * 数据源路由，可以实现多个数据源的切换。

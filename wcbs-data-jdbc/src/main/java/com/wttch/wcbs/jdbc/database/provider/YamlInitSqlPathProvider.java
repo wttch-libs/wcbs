@@ -3,7 +3,6 @@ package com.wttch.wcbs.jdbc.database.provider;
 import com.wttch.wcbs.core.util.MapUtils;
 import com.wttch.wcbs.jdbc.config.DataSourceProperty;
 import com.wttch.wcbs.jdbc.config.MultipleDataSourceProperty;
-
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;

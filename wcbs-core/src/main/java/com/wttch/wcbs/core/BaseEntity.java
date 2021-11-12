@@ -1,8 +1,7 @@
 package com.wttch.wcbs.core;
 
-import lombok.*;
-
 import java.time.LocalDateTime;
+import lombok.*;
 
 /**
  * 所有应用实体的基类。

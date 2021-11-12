@@ -2,12 +2,11 @@ package com.wttch.wcbs.jdbc.config;
 
 import com.wttch.wcbs.jdbc.durid.DruidDataSourceProperties;
 import com.wttch.wcbs.jdbc.hikari.HikariDataSourceProperties;
+import java.util.List;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.boot.context.properties.NestedConfigurationProperty;
-
-import java.util.List;
 
 /**
  * 单个数据库源配置

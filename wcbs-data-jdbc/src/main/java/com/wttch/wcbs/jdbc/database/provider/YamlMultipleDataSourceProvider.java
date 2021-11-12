@@ -1,11 +1,10 @@
 package com.wttch.wcbs.jdbc.database.provider;
 
 import com.wttch.wcbs.jdbc.config.MultipleDataSourceProperty;
+import com.wttch.wcbs.jdbc.database.DataSourceFactory;
 import java.util.HashMap;
 import java.util.Map;
 import javax.sql.DataSource;
-
-import com.wttch.wcbs.jdbc.database.DataSourceFactory;
 import lombok.AllArgsConstructor;
 
 /**

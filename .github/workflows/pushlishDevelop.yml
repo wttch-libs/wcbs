@@ -37,7 +37,7 @@ jobs:
             ~/.gradle/wrapper
             ~/wcbs-core/build
             ~/wcbs-data-jdbc/build
-            ~/wcbs-data-mybatis/build\
+            ~/wcbs-data-mybatis/build
             ~/wcbs-spring-boot-starter/build
             ~/wcbs-web/build
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
@@ -66,8 +66,6 @@ jobs:
             ~/wcbs-core/build
             ~/wcbs-data-jdbc/build
             ~/wcbs-data-mybatis/build
-            ~/wcbs-data-mybatis-spring-boot-starter/build
-            ~/wcbs-spring-boot-autoconfigure/build
             ~/wcbs-spring-boot-starter/build
             ~/wcbs-web/build
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
