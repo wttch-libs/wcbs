@@ -4,4 +4,7 @@ dependencies {
     api(project(":wcbs-core"))
 
     api(Spring.Boot.starterWeb)
+
+    compileOnly(Spring.Boot.configurationProcessor)
+    annotationProcessor(Spring.Boot.configurationProcessor)
 }

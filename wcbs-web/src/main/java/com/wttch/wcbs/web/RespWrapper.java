@@ -19,7 +19,6 @@ import org.jetbrains.annotations.Nullable;
  */
 @Getter
 public class RespWrapper<T> {
-  @JsonSerialize(using = ErrorCodeSerializer.class)
   @NotNull
   private final ErrorCode errorCode;
 
