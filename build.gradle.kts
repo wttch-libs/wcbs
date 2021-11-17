@@ -21,7 +21,7 @@ repositories {
 
 buildscript {
     dependencies {
-        classpath("com.wttch.plugin:libs:1.0.1.0005-SNAPSHOT")
+        classpath("com.wttch.plugin:libs:1.0.1.0007-SNAPSHOT")
     }
 
     repositories {
@@ -43,6 +43,7 @@ subprojects {
     dependencies {
         testImplementation("junit", "junit", "4.12")
 
+        implementation("org.slf4j:slf4j-api:1.7.32")
         // lombok
         compileOnly(Lombok.lombok)
         annotationProcessor(Lombok.lombok)
@@ -113,6 +114,7 @@ tasks.register("publishAll") {
     dependsOn(":wcbs-core:publish")
     dependsOn(":wcbs-data-jdbc:publish")
     dependsOn(":wcbs-data-mybatis:publish")
+    dependsOn(":wcbs-mybatis-autoconfigure:publish")
     dependsOn(":wcbs-web:publish")
     dependsOn(":wcbs-spring-boot-starter:publish")
     doLast {

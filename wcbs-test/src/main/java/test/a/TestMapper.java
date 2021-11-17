@@ -1,6 +1,6 @@
 package test.a;
 
-import com.wttch.wcbs.jdbc.annotations.AssignDataSource;
+import com.wttch.wcbs.data.jdbc.annotations.AssignDataSource;
 
 public interface TestMapper {
   @AssignDataSource(value = "iam2")

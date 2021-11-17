@@ -1,6 +1,5 @@
 package com.wttch.wcbs.web.config;
 
-import com.wttch.wcbs.web.enums.JsonType;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,5 +12,4 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @Getter
 @Setter
 public class WcbsWebProperty {
-  private JsonType json;
 }

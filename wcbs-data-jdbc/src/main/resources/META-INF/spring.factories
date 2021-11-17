@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  com.wttch.wcbs.jdbc.config.MultipleDataSourceAutoConfiguration
+  com.wttch.wcbs.data.jdbc.config.MultipleDataSourceAutoConfiguration

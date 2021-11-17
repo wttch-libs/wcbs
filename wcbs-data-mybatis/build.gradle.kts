@@ -3,9 +3,7 @@ import com.wttch.plugin.libs.dependencies.Spring
 dependencies {
     api(project(":wcbs-core"))
 
-    api(com.wttch.plugin.libs.dependencies.Mybatis.springBoot) {
-        excludeSpringJdbc()
-    }
+    api(project(":wcbs-mybatis-autoconfigure"))
     api(project(":wcbs-data-jdbc"))
     api(Spring.Boot.starterAop)
 

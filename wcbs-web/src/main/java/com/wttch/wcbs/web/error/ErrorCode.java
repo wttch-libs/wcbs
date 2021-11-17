@@ -1,12 +1,11 @@
 package com.wttch.wcbs.web.error;
 
 import com.wttch.wcbs.core.exception.FrameworkException;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * 简单的错误代码实现, 可以直接使用错误代码和错误描述定义错误码.

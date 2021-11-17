@@ -1,9 +1,7 @@
 package com.wttch.wcbs.web;
 
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.wttch.wcbs.web.error.ErrorCode;
 import com.wttch.wcbs.web.error.ErrorCodes;
-import com.wttch.wcbs.web.serializer.ErrorCodeSerializer;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -19,8 +17,7 @@ import org.jetbrains.annotations.Nullable;
  */
 @Getter
 public class RespWrapper<T> {
-  @NotNull
-  private final ErrorCode errorCode;
+  @NotNull private final ErrorCode errorCode;
 
   private final T data;
 

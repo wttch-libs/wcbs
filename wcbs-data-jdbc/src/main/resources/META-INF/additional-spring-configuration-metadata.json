@@ -2,7 +2,7 @@
   "groups": [
     {
       "name": "wttch.data.database",
-      "type": "com.wttch.wcbs.jdbc.config.MultipleDataSourceProperty"
+      "type": "com.wttch.wcbs.data.jdbc.config.MultipleDataSourceProperties"
     }
   ]
 }
