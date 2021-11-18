@@ -1,5 +1,10 @@
-package com.wttch.wcbs.data.mybatis.autoconfigure;
+package com.wttch.wcbs.mybatis.autoconfigure;
 
+import java.beans.PropertyDescriptor;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import javax.sql.DataSource;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.mapping.DatabaseIdProvider;
@@ -40,13 +45,6 @@ import org.springframework.util.CollectionUtils;
 import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
 
-import javax.sql.DataSource;
-import java.beans.PropertyDescriptor;
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
 /**
  * Mybatis Auto Configuration 的替代类, 添加一些额外的自动化属性
  *
@@ -70,7 +68,7 @@ public class WcbsMybatisAutoConfiguration implements InitializingBean {
   private final Interceptor[] interceptors;
 
   /** mybatis 额外声明的 TypeHandler */
-  private final TypeHandler<?>[] typeHandlers;
+  private final TypeHandler[] typeHandlers;
 
   /** mybatis 额外声明的 LanguageDriver */
   private final LanguageDriver[] languageDrivers;
@@ -84,14 +82,17 @@ public class WcbsMybatisAutoConfiguration implements InitializingBean {
   /** mybatis 的配置消费类 */
   private final List<ConfigurationCustomizer> configurationCustomizers;
 
+  private final List<WcbsMapperLocationsProvider> mapperLocationsConfigs;
+
   public WcbsMybatisAutoConfiguration(
       WcbsMybatisProperties properties,
       ObjectProvider<Interceptor[]> interceptorsProvider,
-      ObjectProvider<TypeHandler<?>[]> typeHandlersProvider,
+      ObjectProvider<TypeHandler[]> typeHandlersProvider,
       ObjectProvider<LanguageDriver[]> languageDriversProvider,
       ResourceLoader resourceLoader,
       ObjectProvider<DatabaseIdProvider> databaseIdProvider,
-      ObjectProvider<List<ConfigurationCustomizer>> configurationCustomizersProvider) {
+      ObjectProvider<List<ConfigurationCustomizer>> configurationCustomizersProvider,
+      ObjectProvider<List<WcbsMapperLocationsProvider>> mapperLocationsConfigsProvider) {
     this.properties = properties;
     this.interceptors = interceptorsProvider.getIfAvailable();
     this.typeHandlers = typeHandlersProvider.getIfAvailable();
@@ -99,6 +100,7 @@ public class WcbsMybatisAutoConfiguration implements InitializingBean {
     this.resourceLoader = resourceLoader;
     this.databaseIdProvider = databaseIdProvider.getIfAvailable();
     this.configurationCustomizers = configurationCustomizersProvider.getIfAvailable();
+    this.mapperLocationsConfigs = mapperLocationsConfigsProvider.getIfAvailable();
   }
 
   @Override
@@ -150,6 +152,18 @@ public class WcbsMybatisAutoConfiguration implements InitializingBean {
     }
     if (!ObjectUtils.isEmpty(this.typeHandlers)) {
       factory.setTypeHandlers(this.typeHandlers);
+    }
+    if (Objects.nonNull(mapperLocationsConfigs)) {
+      var mapperLocations =
+          Optional.ofNullable(this.properties.getMapperLocations()).orElse(new String[0]);
+      var configMapperLocations =
+          mapperLocationsConfigs.stream()
+              .filter(t -> Objects.nonNull(t.getLocations()))
+              .flatMap(config -> config.getLocations().stream())
+              .collect(Collectors.toList());
+      configMapperLocations.addAll(List.of(mapperLocations));
+      log.debug("加载了{}条配置的 mapper location 位置", configMapperLocations.size());
+      this.properties.setMapperLocations(configMapperLocations.toArray(new String[0]));
     }
     if (!ObjectUtils.isEmpty(this.properties.resolveMapperLocations())) {
       factory.setMapperLocations(this.properties.resolveMapperLocations());

@@ -1,4 +1,4 @@
-package com.wttch.wcbs.data.mybatis.autoconfigure;
+package com.wttch.wcbs.mybatis.autoconfigure;
 
 import org.apache.ibatis.session.Configuration;
 

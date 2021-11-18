@@ -1,12 +1,20 @@
 package com.wttch.wcbs.data.mybatis.config;
 
+import com.wttch.wcbs.mybatis.autoconfigure.WcbsMapperLocationsProvider;
+import java.util.List;
 import java.util.Properties;
 import org.apache.ibatis.mapping.DatabaseIdProvider;
 import org.apache.ibatis.mapping.VendorDatabaseIdProvider;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
-public class WcbsDatabaseIdProvider {
-  /** 同时值此号多种方言的 sql, 需要在mapper xml文件中指定相应的 database id */
+@Configuration
+public class WcbsDataMybatisConfiguration {
+  /**
+   * 同时值此号多种方言的 sql, 需要在mapper xml文件中指定相应的 database id
+   *
+   * @return databaseId 提供器
+   */
   @Bean
   public DatabaseIdProvider databaseIdProvider() {
     var databaseIdProvider = new VendorDatabaseIdProvider();
@@ -24,5 +32,11 @@ public class WcbsDatabaseIdProvider {
     properties.setProperty("Hana", "hana");
     databaseIdProvider.setProperties(properties);
     return databaseIdProvider;
+  }
+
+  @Bean
+  public WcbsMapperLocationsProvider wcbsMapperLocationsConfig() {
+    var locations = List.of("classpath*:/wcbs-data-mybatis/**/*.xml");
+    return new WcbsMapperLocationsProvider(locations);
   }
 }

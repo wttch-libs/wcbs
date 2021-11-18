@@ -1,4 +1,4 @@
-package com.wttch.wcbs.data.mybatis.autoconfigure;
+package com.wttch.wcbs.mybatis.autoconfigure;
 
 import java.io.IOException;
 import java.util.Optional;
@@ -62,7 +62,11 @@ public class WcbsMybatisProperties {
   /** 用于自定义默认设置的 Configuration 对象。如果指定了 {@link #configLocation}，则不使用此属性 */
   @NestedConfigurationProperty private Configuration configuration;
 
-  /** 将mapper所有路径转换为 Resource 数组 */
+  /**
+   * 将mapper所有路径转换为 Resource 数组
+   *
+   * @return 所有mapper文件路径位置
+   */
   public Resource[] resolveMapperLocations() {
     return Stream.of(Optional.ofNullable(this.mapperLocations).orElse(new String[0]))
         .flatMap(location -> Stream.of(getResources(location)))

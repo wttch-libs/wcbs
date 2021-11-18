@@ -1,4 +1,4 @@
-package com.wttch.wcbs.data.mybatis.autoconfigure;
+package com.wttch.wcbs.mybatis.autoconfigure;
 
 import java.io.IOException;
 import java.io.UncheckedIOException;

@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  com.wttch.wcbs.data.mybatis.autoconfigure.WcbsMybatisAutoConfiguration
+  com.wttch.wcbs.mybatis.autoconfigure.WcbsMybatisAutoConfiguration

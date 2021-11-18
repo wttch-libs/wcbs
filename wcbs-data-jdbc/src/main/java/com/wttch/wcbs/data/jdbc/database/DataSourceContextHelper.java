@@ -13,6 +13,7 @@ import org.springframework.lang.Nullable;
 @Slf4j
 public class DataSourceContextHelper {
   private DataSourceContextHelper() {}
+
   private static final ThreadLocal<String> CONTEXT = new ThreadLocal<>();
 
   public static void switchTo(String name) {
