@@ -21,7 +21,7 @@ repositories {
 
 buildscript {
     dependencies {
-        classpath("com.wttch.plugin:libs:1.0.1.0007-SNAPSHOT")
+        classpath("com.wttch.plugin:libs:1.0.1.0008-SNAPSHOT")
     }
 
     repositories {
@@ -112,11 +112,11 @@ tasks.register("publishAll") {
         println("开始发布快照")
     }
     dependsOn(":wcbs-core:publish")
-    dependsOn(":wcbs-data-jdbc:publish")
-    dependsOn(":wcbs-data-mybatis:publish")
-    dependsOn(":wcbs-mybatis-autoconfigure:publish")
+    dependsOn(":wcbs-data:wcbs-data-jdbc:publish")
+    dependsOn(":wcbs-data:wcbs-data-mybatis:publish")
+    dependsOn(":wcbs-common:wcbs-mybatis-autoconfigure:publish")
     dependsOn(":wcbs-web:publish")
-    dependsOn(":wcbs-spring-boot-starter:publish")
+    dependsOn(":wcbs:publish")
     doLast {
         println("快照发布完成")
     }

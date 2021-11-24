@@ -36,9 +36,10 @@ jobs:
             ~/.gradle/caches
             ~/.gradle/wrapper
             ~/wcbs-core/build
-            ~/wcbs-data-jdbc/build
-            ~/wcbs-data-mybatis/build
-            ~/wcbs-spring-boot-starter/build
+            ~/wcbs-data/wcbs-data-jdbc/build
+            ~/wcbs-data/wcbs-data-mybatis/build
+            ~/wcbs-common/wcbs-mybatis-autoconfigure/build
+            ~/wcbs/build
             ~/wcbs-web/build
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
           restore-keys: |
@@ -64,9 +65,10 @@ jobs:
             ~/.gradle/caches
             ~/.gradle/wrapper
             ~/wcbs-core/build
-            ~/wcbs-data-jdbc/build
-            ~/wcbs-data-mybatis/build
-            ~/wcbs-spring-boot-starter/build
+            ~/wcbs-data/wcbs-data-jdbc/build
+            ~/wcbs-data/wcbs-data-mybatis/build
+            ~/wcbs-common/wcbs-mybatis-autoconfigure/build
+            ~/wcbs/build
             ~/wcbs-web/build
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
           restore-keys: |
