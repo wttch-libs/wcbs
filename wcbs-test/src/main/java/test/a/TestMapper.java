@@ -5,5 +5,5 @@ import com.wttch.wcbs.data.mybatis.QueryRequest;
 
 public interface TestMapper {
   @AssignDataSource(value = "iam2")
-  String test(QueryRequest items);
+  String test(QueryRequest items, Integer x);
 }

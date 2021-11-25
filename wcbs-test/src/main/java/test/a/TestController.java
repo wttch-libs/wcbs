@@ -12,7 +12,7 @@ public class TestController {
 
   @PostMapping("/test")
   public RespWrapper<String> test(@RequestBody Payload payload) {
-    testMapper.test(payload);
+    testMapper.test(payload, 1);
     return RespWrapper.ok("ok");
   }
 }

@@ -1,6 +1,9 @@
 package com.wttch.wcbs.data.mybatis.fields;
 
+import com.wttch.wcbs.data.mybatis.Parameter;
 import com.wttch.wcbs.data.mybatis.enums.QueryParamType;
+
+import java.util.List;
 
 /**
  * 字符串模糊查询，后缀模糊形式，可以使用索引
@@ -28,6 +31,11 @@ public class QueryStringFuzzyField extends QueryField<String> {
 
   @Override
   public String queryExpression() {
-    return String.format(" %s like '%s%%'", key, value);
+    return String.format(" %s like ?", key);
+  }
+
+  @Override
+  public List<Parameter> parameters() {
+    return List.of(new Parameter(handleType(), value + "%"));
   }
 }

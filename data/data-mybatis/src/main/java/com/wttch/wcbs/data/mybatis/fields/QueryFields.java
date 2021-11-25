@@ -5,16 +5,18 @@ import org.springframework.context.annotation.ClassPathScanningCandidateComponen
 import org.springframework.core.type.filter.AssignableTypeFilter;
 
 import java.lang.reflect.InvocationTargetException;
-import java.util.HashMap;
+import java.util.EnumMap;
 import java.util.Map;
 
+@SuppressWarnings("unchecked")
 public class QueryFields {
   private QueryFields() {}
 
-  private static final Map<QueryParamType, Class<QueryableField>> queryFieldMap = new HashMap<>();
+  private static final Map<QueryParamType, Class<QueryableField>> QUERY_FIELD_MAP =
+      new EnumMap<>(QueryParamType.class);
 
   public static Class<QueryableField> getQueryField(QueryParamType paramType) {
-    return queryFieldMap.get(paramType);
+    return QUERY_FIELD_MAP.get(paramType);
   }
 
   static {
@@ -29,7 +31,7 @@ public class QueryFields {
                   var queryFieldClass =
                       (Class<QueryableField>) Class.forName(beanDefinition.getBeanClassName());
                   var queryField = (QueryField<?>) (queryFieldClass.getConstructor().newInstance());
-                  queryFieldMap.put(queryField.queryParamType(), queryFieldClass);
+                  QUERY_FIELD_MAP.put(queryField.queryParamType(), queryFieldClass);
                 } catch (ClassNotFoundException
                     | NoSuchMethodException
                     | InvocationTargetException

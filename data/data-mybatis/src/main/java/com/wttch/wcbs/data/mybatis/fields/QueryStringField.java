@@ -1,6 +1,9 @@
 package com.wttch.wcbs.data.mybatis.fields;
 
+import com.wttch.wcbs.data.mybatis.Parameter;
 import com.wttch.wcbs.data.mybatis.enums.QueryParamType;
+
+import java.util.List;
 
 /**
  * 字符串精确查询字段
@@ -33,6 +36,11 @@ public class QueryStringField extends QueryField<String> {
    */
   @Override
   public String queryExpression() {
-    return String.format(" %s = '%s' ", key, value);
+    return String.format(" %s = ? ", key);
+  }
+
+  @Override
+  public List<Parameter> parameters() {
+    return List.of(new Parameter(handleType(), value));
   }
 }

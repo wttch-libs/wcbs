@@ -1,6 +1,9 @@
 package com.wttch.wcbs.data.mybatis.fields;
 
+import com.wttch.wcbs.data.mybatis.Parameter;
 import com.wttch.wcbs.data.mybatis.enums.QueryParamType;
+
+import java.util.List;
 
 /**
  * 可以查询的字段
@@ -28,4 +31,6 @@ public interface QueryableField {
    * @param key 查询的key
    */
   void setKey(String key);
+
+  List<Parameter> parameters();
 }

@@ -4,6 +4,6 @@
     <select id="test" resultType="java.lang.String">
         SELECT *
         from iam_account
-        where true
+        where #{param2} = #{param2}
     </select>
 </mapper>

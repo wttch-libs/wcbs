@@ -8,6 +8,7 @@ import org.apache.ibatis.cache.CacheKey;
 import org.apache.ibatis.executor.Executor;
 import org.apache.ibatis.mapping.BoundSql;
 import org.apache.ibatis.mapping.MappedStatement;
+import org.apache.ibatis.mapping.ParameterMapping;
 import org.apache.ibatis.plugin.Interceptor;
 import org.apache.ibatis.plugin.Intercepts;
 import org.apache.ibatis.plugin.Invocation;
@@ -84,10 +85,20 @@ public class QueryFieldInterceptor implements Interceptor {
     }
     if (queryParam != null) {
       var sql = new StringBuilder(boundSql.getSql());
-      queryParam
-          .queryItems()
-          .getItems()
-          .forEach(field -> sql.append(" and ").append(field.queryExpression()));
+      var cnt = 1;
+      var parameterMappings = boundSql.getParameterMappings();
+      var parameterMap = (MapperMethod.ParamMap<Object>) parameter;
+      for (var field : queryParam.queryItems().getItems()) {
+        sql.append(" and ").append(field.queryExpression());
+        var params = field.parameters();
+        for (var param : params) {
+          cnt++;
+          parameterMappings.add(
+              new ParameterMapping.Builder(ms.getConfiguration(), "tmp" + cnt, param.getClazz())
+                  .build());
+          parameterMap.put("tmp" + cnt, param.getValue());
+        }
+      }
       boundSql =
           new BoundSql(
               ms.getConfiguration(), sql.toString(), boundSql.getParameterMappings(), parameter);

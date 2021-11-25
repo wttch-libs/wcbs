@@ -4,17 +4,15 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.wttch.wcbs.core.exception.FrameworkException;
 import com.wttch.wcbs.data.mybatis.annotations.OrderByColumns;
 import com.wttch.wcbs.data.mybatis.annotations.QueryColumn;
-import com.wttch.wcbs.data.mybatis.fields.QueryField;
-import com.wttch.wcbs.data.mybatis.fields.QueryFields;
-import com.wttch.wcbs.data.mybatis.fields.QueryableField;
 import java.lang.reflect.AccessibleObject;
-import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
+
+import com.wttch.wcbs.data.mybatis.fields.QueryFields;
 import org.jetbrains.annotations.Nullable;
 import org.springframework.core.annotation.AnnotatedElementUtils;
 import org.springframework.core.annotation.AnnotationUtils;
@@ -36,7 +34,8 @@ public interface QueryRequest {
             .map(
                 field -> {
                   try {
-                    var queryColumn = AnnotatedElementUtils.findMergedAnnotation(field, QueryColumn.class);
+                    var queryColumn =
+                        AnnotatedElementUtils.findMergedAnnotation(field, QueryColumn.class);
                     if (Objects.isNull(queryColumn)) {
                       return null;
                     }
@@ -53,7 +52,9 @@ public interface QueryRequest {
                               .newInstance(queryField);
 
                       var prefix =
-                              queryColumn.tableName().isEmpty() ? "" : queryColumn.tableName() + queryColumn.delimiter();
+                          queryColumn.tableName().isEmpty()
+                              ? ""
+                              : queryColumn.tableName() + queryColumn.delimiter();
                       var key = prefix + queryColumn.columnName();
                       queryColumnT.setKey(key);
                       return queryColumnT;

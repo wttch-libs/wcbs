@@ -1,7 +1,6 @@
 package com.wttch.wcbs.data.mybatis.config;
 
 import com.wttch.wcbs.data.mybatis.handler.QueryFieldInterceptor;
-import com.wttch.wcbs.mybatis.autoconfigure.WcbsMapperLocationsProvider;
 import java.util.Properties;
 import org.apache.ibatis.mapping.DatabaseIdProvider;
 import org.apache.ibatis.mapping.VendorDatabaseIdProvider;
@@ -37,11 +36,6 @@ public class WcbsDataMybatisConfiguration {
     properties.setProperty("Hana", "hana");
     databaseIdProvider.setProperties(properties);
     return databaseIdProvider;
-  }
-
-  @Bean
-  public WcbsMapperLocationsProvider wcbsMapperLocationsConfig() {
-    return WcbsMapperLocationsProvider.of("classpath*:/wcbs-data-mybatis/**/*.xml");
   }
 
   @Bean

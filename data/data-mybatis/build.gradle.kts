@@ -5,7 +5,7 @@ dependencies {
     api(project(":core"))
 
     api(project(":common:mybatis-autoconfigure"))
-    api(project(":data:data-jdbc"))
+//    api(project(":data:data-jdbc"))
     api(Spring.Boot.starterAop)
     implementation(Jackson.annotations)
 
