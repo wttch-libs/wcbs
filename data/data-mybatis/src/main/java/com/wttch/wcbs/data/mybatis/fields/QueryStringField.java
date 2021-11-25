@@ -10,8 +10,15 @@ import com.wttch.wcbs.data.mybatis.enums.QueryParamType;
  * @author wttch
  */
 public class QueryStringField extends QueryField<String> {
+  public QueryStringField() {}
+
   public QueryStringField(String value) {
-    super(value);
+    setValue(value);
+  }
+
+  @Override
+  public Class<String> handleType() {
+    return String.class;
   }
 
   @Override

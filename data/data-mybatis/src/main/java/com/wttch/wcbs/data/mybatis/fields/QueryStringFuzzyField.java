@@ -10,8 +10,15 @@ import com.wttch.wcbs.data.mybatis.enums.QueryParamType;
  * @author wttch
  */
 public class QueryStringFuzzyField extends QueryField<String> {
+  public QueryStringFuzzyField() {}
+
   public QueryStringFuzzyField(String value) {
-    super(value);
+    setValue(value);
+  }
+
+  @Override
+  public Class<String> handleType() {
+    return String.class;
   }
 
   @Override

@@ -8,10 +8,9 @@ import lombok.Setter;
  * @author wttch
  */
 public abstract class QueryField<T> implements QueryableField {
-  protected QueryField(T value) {
-    this.value = value;
-  }
+
+  public abstract Class<T> handleType();
 
   @Setter protected String key;
-  protected final T value;
+  @Setter protected T value;
 }

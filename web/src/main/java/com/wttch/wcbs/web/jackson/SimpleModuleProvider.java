@@ -17,6 +17,10 @@ public class SimpleModuleProvider implements ModuleProvider {
     simpleModule = new SimpleModule(name);
   }
 
+  public SimpleModuleProvider(SimpleModule simpleModule) {
+    this.simpleModule = simpleModule;
+  }
+
   public <T> SimpleModuleProvider addSerializer(
       Class<? extends T> clazz, JsonSerializer<T> jsonSerializer) {
     simpleModule.addSerializer(clazz, jsonSerializer);

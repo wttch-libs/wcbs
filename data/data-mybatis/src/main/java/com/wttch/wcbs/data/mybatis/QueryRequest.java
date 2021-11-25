@@ -1,16 +1,22 @@
 package com.wttch.wcbs.data.mybatis;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.wttch.wcbs.core.exception.FrameworkException;
 import com.wttch.wcbs.data.mybatis.annotations.OrderByColumns;
 import com.wttch.wcbs.data.mybatis.annotations.QueryColumn;
+import com.wttch.wcbs.data.mybatis.fields.QueryField;
+import com.wttch.wcbs.data.mybatis.fields.QueryFields;
 import com.wttch.wcbs.data.mybatis.fields.QueryableField;
 import java.lang.reflect.AccessibleObject;
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import org.jetbrains.annotations.Nullable;
+import org.springframework.core.annotation.AnnotatedElementUtils;
 import org.springframework.core.annotation.AnnotationUtils;
 
 /**
@@ -27,18 +33,36 @@ public interface QueryRequest {
     AccessibleObject.setAccessible(fields, true);
     var t =
         Arrays.stream(fields)
-            // 过滤 QueryItem 类型的字段
-            .filter(field -> QueryableField.class.isAssignableFrom(field.getType()))
             .map(
                 field -> {
                   try {
-                    var queryItem = (QueryableField) (field.get(this));
-                    // 字段值
-                    if (queryItem != null) {
-                      var values = handleQueryField(field);
-                      queryItem.setKey(values);
+                    var queryColumn = AnnotatedElementUtils.findMergedAnnotation(field, QueryColumn.class);
+                    if (Objects.isNull(queryColumn)) {
+                      return null;
                     }
-                    return queryItem;
+                    var queryFieldClass =
+                        Optional.ofNullable(QueryFields.getQueryField(queryColumn.type()))
+                            .orElseThrow(
+                                () -> new FrameworkException("不支持的类型" + queryColumn.type()));
+                    var queryField = (field.get(this));
+
+                    try {
+                      var queryColumnT =
+                          queryFieldClass
+                              .getConstructor(queryField.getClass())
+                              .newInstance(queryField);
+
+                      var prefix =
+                              queryColumn.tableName().isEmpty() ? "" : queryColumn.tableName() + queryColumn.delimiter();
+                      var key = prefix + queryColumn.columnName();
+                      queryColumnT.setKey(key);
+                      return queryColumnT;
+                    } catch (InstantiationException
+                        | InvocationTargetException
+                        | NoSuchMethodException e) {
+                      e.printStackTrace();
+                      return null;
+                    }
                   } catch (IllegalAccessException e) {
                     e.printStackTrace();
                     return null;
@@ -92,16 +116,5 @@ public interface QueryRequest {
    */
   default String sortDirection() {
     return ASC;
-  }
-
-  private String handleQueryField(Field field) {
-    var values = field.getName();
-    var queryField = AnnotationUtils.getAnnotation(field, QueryColumn.class);
-    if (Objects.nonNull(queryField)) {
-      var prefix =
-          queryField.tableName().isEmpty() ? "" : queryField.tableName() + queryField.delimiter();
-      values = prefix + queryField.value();
-    }
-    return values;
   }
 }
