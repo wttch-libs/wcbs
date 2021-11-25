@@ -75,8 +75,8 @@ subprojects {
         withSourcesJar()
     }
 
-    group = "com.wttch"
-    version = "0.1.1.0005-SNAPSHOT"
+    group = "com.wttch.wcbs"
+    version = "0.0.1.0001-SNAPSHOT"
 
     publishing {
         publications {
@@ -111,11 +111,11 @@ tasks.register("publishAll") {
     doFirst {
         println("开始发布快照")
     }
-    dependsOn(":wcbs-core:publish")
-    dependsOn(":wcbs-data:wcbs-data-jdbc:publish")
-    dependsOn(":wcbs-data:wcbs-data-mybatis:publish")
-    dependsOn(":wcbs-common:wcbs-mybatis-autoconfigure:publish")
-    dependsOn(":wcbs-web:publish")
+    dependsOn(":core:publish")
+    dependsOn(":data:data-jdbc:publish")
+    dependsOn(":data:data-mybatis:publish")
+    dependsOn(":common:mybatis-autoconfigure:publish")
+    dependsOn(":web:publish")
     dependsOn(":wcbs:publish")
     doLast {
         println("快照发布完成")

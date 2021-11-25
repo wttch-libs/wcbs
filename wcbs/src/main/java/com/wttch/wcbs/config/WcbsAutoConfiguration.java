@@ -22,6 +22,8 @@ public class WcbsAutoConfiguration {
   /**
    * 通用查询的字段的反序列化器提供器，会自动注入到 {@link
    * org.springframework.http.converter.json.MappingJackson2HttpMessageConverter} 中。
+   *
+   * @return 反序列化提供器
    */
   @Bean
   public ModuleProvider mybatisQueryModuleProvider() {

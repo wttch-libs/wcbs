@@ -2,10 +2,10 @@ import com.wttch.plugin.libs.dependencies.Spring
 import com.wttch.plugin.libs.dependencies.Jackson
 
 dependencies {
-    api(project(":wcbs-core"))
+    api(project(":core"))
 
-    api(project(":wcbs-common:wcbs-mybatis-autoconfigure"))
-    api(project(":wcbs-data:wcbs-data-jdbc"))
+    api(project(":common:mybatis-autoconfigure"))
+    api(project(":data:data-jdbc"))
     api(Spring.Boot.starterAop)
     implementation(Jackson.annotations)
 

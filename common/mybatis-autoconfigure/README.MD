@@ -1,4 +1,4 @@
-# wcbs-data-mybatis-autoconfigure
+# data-mybatis-autoconfigure
 
 Mybatis 的 autoconfigure 扩展性不是很好，所以参照 mybatis-autoconfigure 重写，并为其添加部分可扩展功能。
 

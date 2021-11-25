@@ -1,7 +1,7 @@
 import com.wttch.plugin.libs.dependencies.*
 
 dependencies {
-    api(project(":wcbs-core"))
+    api(project(":core"))
     api(Spring.Boot.starterJdbc)
     api(Spring.Boot.starterAop)
 
