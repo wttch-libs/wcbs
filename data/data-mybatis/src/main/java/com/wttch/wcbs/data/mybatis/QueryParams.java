@@ -1,6 +1,6 @@
 package com.wttch.wcbs.data.mybatis;
 
-import com.wttch.wcbs.data.mybatis.fields.QueryableField;
+import com.wttch.wcbs.data.mybatis.item.QueryItem;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,7 +12,7 @@ import lombok.Getter;
  */
 @AllArgsConstructor
 @Getter
-public class QueryItems {
+public class QueryParams {
   /** 所有通用查询的字段 */
-  private List<QueryableField> items;
+  private List<? extends QueryItem<?>> items;
 }

@@ -1,6 +1,6 @@
 package com.wttch.wcbs.data.mybatis.config;
 
-import com.wttch.wcbs.data.mybatis.handler.QueryFieldInterceptor;
+import com.wttch.wcbs.data.mybatis.interceptor.QueryFieldInterceptor;
 import java.util.Properties;
 import org.apache.ibatis.mapping.DatabaseIdProvider;
 import org.apache.ibatis.mapping.VendorDatabaseIdProvider;

@@ -1,5 +1,6 @@
-package com.wttch.wcbs.data.mybatis.handler;
+package com.wttch.wcbs.data.mybatis.interceptor;
 
+import com.wttch.wcbs.data.mybatis.Parameter;
 import com.wttch.wcbs.data.mybatis.QueryRequest;
 import com.wttch.wcbs.data.mybatis.exception.MybatisException;
 import java.util.stream.Collectors;
@@ -94,7 +95,7 @@ public class QueryFieldInterceptor implements Interceptor {
         for (var param : params) {
           cnt++;
           parameterMappings.add(
-              new ParameterMapping.Builder(ms.getConfiguration(), "tmp" + cnt, param.getClazz())
+              new ParameterMapping.Builder(ms.getConfiguration(), "tmp" + cnt, param.getMappingClass())
                   .build());
           parameterMap.put("tmp" + cnt, param.getValue());
         }

@@ -12,7 +12,7 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import com.wttch.wcbs.data.mybatis.fields.QueryFields;
+import com.wttch.wcbs.data.mybatis.item.QueryItems;
 import org.jetbrains.annotations.Nullable;
 import org.springframework.core.annotation.AnnotatedElementUtils;
 import org.springframework.core.annotation.AnnotationUtils;
@@ -24,54 +24,8 @@ import org.springframework.core.annotation.AnnotationUtils;
  */
 public interface QueryRequest {
 
-  default QueryItems queryItems() {
-    var clazz = getClass();
-    // 所有字段
-    var fields = clazz.getDeclaredFields();
-    AccessibleObject.setAccessible(fields, true);
-    var t =
-        Arrays.stream(fields)
-            .map(
-                field -> {
-                  try {
-                    var queryColumn =
-                        AnnotatedElementUtils.findMergedAnnotation(field, QueryColumn.class);
-                    if (Objects.isNull(queryColumn)) {
-                      return null;
-                    }
-                    var queryFieldClass =
-                        Optional.ofNullable(QueryFields.getQueryField(queryColumn.type()))
-                            .orElseThrow(
-                                () -> new FrameworkException("不支持的类型" + queryColumn.type()));
-                    var queryField = (field.get(this));
-
-                    try {
-                      var queryColumnT =
-                          queryFieldClass
-                              .getConstructor(queryField.getClass())
-                              .newInstance(queryField);
-
-                      var prefix =
-                          queryColumn.tableName().isEmpty()
-                              ? ""
-                              : queryColumn.tableName() + queryColumn.delimiter();
-                      var key = prefix + queryColumn.columnName();
-                      queryColumnT.setKey(key);
-                      return queryColumnT;
-                    } catch (InstantiationException
-                        | InvocationTargetException
-                        | NoSuchMethodException e) {
-                      e.printStackTrace();
-                      return null;
-                    }
-                  } catch (IllegalAccessException e) {
-                    e.printStackTrace();
-                    return null;
-                  }
-                })
-            .filter(Objects::nonNull)
-            .collect(Collectors.toList());
-    return new QueryItems(t);
+  default QueryParams queryItems() {
+    return new QueryParams(QueryItems.getQueryItems(this));
   }
 
   /**

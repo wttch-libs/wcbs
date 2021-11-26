@@ -1,7 +1,8 @@
-package com.wttch.wcbs.data.mybatis.fields;
+package com.wttch.wcbs.data.mybatis.item;
 
 import com.wttch.wcbs.data.mybatis.Parameter;
 import com.wttch.wcbs.data.mybatis.enums.QueryParamType;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
@@ -12,15 +13,11 @@ import java.util.List;
  *
  * @author wttch
  */
-public class QueryStringField extends QueryField<String> {
-  public QueryStringField() {}
-
-  public QueryStringField(String value) {
-    setValue(value);
-  }
+@NoArgsConstructor
+class QueryStringItem extends QueryItem<String> {
 
   @Override
-  public Class<String> handleType() {
+  public Class<String> valueType() {
     return String.class;
   }
 
@@ -41,6 +38,6 @@ public class QueryStringField extends QueryField<String> {
 
   @Override
   public List<Parameter> parameters() {
-    return List.of(new Parameter(handleType(), value));
+    return List.of(new Parameter(String.class, value));
   }
 }
