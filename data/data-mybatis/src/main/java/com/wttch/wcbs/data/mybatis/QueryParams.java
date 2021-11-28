@@ -6,9 +6,13 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 /**
- * 实际查询使用的传参，实现{@link QueryRequest} 的请求载体类，可以直接通过调用 {@link QueryRequest#queryItems()}来对 查询参数进行装配。
+ * 实际查询使用的传参。
+ *
+ * <p>使用 {@link com.wttch.wcbs.data.mybatis.annotations.QueryEntity}
+ * 注解标注的对象可以被mybatis插件过滤并生成通用查询sql。
  *
  * @author wttch
+ * @see com.wttch.wcbs.data.mybatis.item.QueryItems#getQueryItems(Object)
  */
 @AllArgsConstructor
 @Getter

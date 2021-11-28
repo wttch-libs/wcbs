@@ -1,21 +1,23 @@
 package com.wttch.wcbs.data.mybatis.interceptor;
 
-import com.wttch.wcbs.data.mybatis.Parameter;
-import com.wttch.wcbs.data.mybatis.QueryRequest;
+import com.wttch.wcbs.data.mybatis.annotations.QueryEntity;
 import com.wttch.wcbs.data.mybatis.exception.MybatisException;
-import java.util.stream.Collectors;
+import com.wttch.wcbs.data.mybatis.item.QueryItems;
 import org.apache.ibatis.binding.MapperMethod;
 import org.apache.ibatis.cache.CacheKey;
 import org.apache.ibatis.executor.Executor;
 import org.apache.ibatis.mapping.BoundSql;
 import org.apache.ibatis.mapping.MappedStatement;
 import org.apache.ibatis.mapping.ParameterMapping;
+import org.apache.ibatis.mapping.ParameterMode;
 import org.apache.ibatis.plugin.Interceptor;
 import org.apache.ibatis.plugin.Intercepts;
 import org.apache.ibatis.plugin.Invocation;
 import org.apache.ibatis.plugin.Signature;
 import org.apache.ibatis.session.ResultHandler;
 import org.apache.ibatis.session.RowBounds;
+
+import java.util.stream.Collectors;
 
 /**
  * 可以使用通用API字段查询的mybatis拦截器
@@ -31,17 +33,6 @@ import org.apache.ibatis.session.RowBounds;
       type = Executor.class,
       method = "query",
       args = {MappedStatement.class, Object.class, RowBounds.class, ResultHandler.class}),
-  @Signature(
-      type = Executor.class,
-      method = "query",
-      args = {
-        MappedStatement.class,
-        Object.class,
-        RowBounds.class,
-        ResultHandler.class,
-        CacheKey.class,
-        BoundSql.class
-      }),
 })
 public class QueryFieldInterceptor implements Interceptor {
 
@@ -54,55 +45,54 @@ public class QueryFieldInterceptor implements Interceptor {
     RowBounds rowBounds = (RowBounds) args[2];
     var resultHandler = (ResultHandler) args[3];
     Executor executor = (Executor) invocation.getTarget();
-    CacheKey cacheKey;
+    CacheKey cacheKey = null;
     BoundSql boundSql;
-    QueryRequest queryParam = null;
+    Object queryParam = null;
     // 由于逻辑关系，只会进入一次
-    if (args.length == 4) {
-      // 4 个参数时
-      if (parameter instanceof QueryRequest) {
-        boundSql = ms.getBoundSql(null);
-        queryParam = (QueryRequest) parameter;
-      } else {
-        var queryParams =
-            ((MapperMethod.ParamMap<?>) parameter)
-                .values().stream()
-                    .filter(QueryRequest.class::isInstance)
-                    .map(QueryRequest.class::cast)
-                    .collect(Collectors.toSet());
-        if (queryParams.size() > 1) {
-          throw new MybatisException("参数多于两个 QueryItem");
-        }
-        if (queryParams.size() == 1) {
-          queryParam = queryParams.iterator().next();
-        }
-        boundSql = ms.getBoundSql(parameter);
-      }
-      cacheKey = executor.createCacheKey(ms, parameter, rowBounds, boundSql);
+    // 4 个参数时
+    if (!(parameter instanceof MapperMethod.ParamMap)
+        && parameter.getClass().isAnnotationPresent(QueryEntity.class)) {
+      boundSql = ms.getBoundSql(null);
+      queryParam = parameter;
     } else {
-      // 6 个参数时
-      cacheKey = (CacheKey) args[4];
-      boundSql = (BoundSql) args[5];
+      var queryParams =
+          ((MapperMethod.ParamMap<?>) parameter)
+              .values().stream()
+                  .filter(p -> p.getClass().isAnnotationPresent(QueryEntity.class))
+                  .collect(Collectors.toSet());
+      if (queryParams.size() > 1) {
+        throw new MybatisException("参数多于两个 QueryItem");
+      }
+      if (queryParams.size() == 1) {
+        queryParam = queryParams.iterator().next();
+      }
+      boundSql = ms.getBoundSql(parameter);
     }
     if (queryParam != null) {
       var sql = new StringBuilder(boundSql.getSql());
       var cnt = 1;
+      // parameterMappings 参数过多
       var parameterMappings = boundSql.getParameterMappings();
       var parameterMap = (MapperMethod.ParamMap<Object>) parameter;
-      for (var field : queryParam.queryItems().getItems()) {
+      for (var field : QueryItems.getQueryItems(queryParam)) {
         sql.append(" and ").append(field.queryExpression());
         var params = field.parameters();
         for (var param : params) {
+          var property = "tmp" + cnt;
+          // 不能一直往里面添加，暂时没找到好的方法
+          if (parameterMappings.stream()
+              .noneMatch(t -> t.getProperty().equals(property))) {
+            parameterMappings.add(
+                new ParameterMapping.Builder(
+                        ms.getConfiguration(), property, param.getMappingClass())
+                    .build());
+          }
+          parameterMap.put(property, param.getValue());
           cnt++;
-          parameterMappings.add(
-              new ParameterMapping.Builder(ms.getConfiguration(), "tmp" + cnt, param.getMappingClass())
-                  .build());
-          parameterMap.put("tmp" + cnt, param.getValue());
         }
       }
-      boundSql =
-          new BoundSql(
-              ms.getConfiguration(), sql.toString(), boundSql.getParameterMappings(), parameter);
+      boundSql = new BoundSql(ms.getConfiguration(), sql.toString(), parameterMappings, parameter);
+      cacheKey = executor.createCacheKey(ms, parameter, rowBounds, boundSql);
       return executor.query(ms, parameter, rowBounds, resultHandler, cacheKey, boundSql);
     } else {
       return invocation.proceed();

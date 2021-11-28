@@ -1,7 +1,6 @@
 package com.wttch.wcbs.data.mybatis.item;
 
 import com.wttch.wcbs.core.exception.FrameworkException;
-import com.wttch.wcbs.data.mybatis.QueryRequest;
 import com.wttch.wcbs.data.mybatis.annotations.QueryColumn;
 import com.wttch.wcbs.data.mybatis.enums.QueryParamType;
 import org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider;
@@ -48,7 +47,7 @@ public class QueryItems {
             });
   }
 
-  public static List<QueryItem<?>> getQueryItems(QueryRequest request) {
+  public static List<QueryItem<?>> getQueryItems(Object request) {
     var clazz = request.getClass();
     // 所有字段
     var fields = clazz.getDeclaredFields();
@@ -67,23 +66,19 @@ public class QueryItems {
                         .orElseThrow(() -> new FrameworkException("不支持的类型" + queryColumn.type()));
                 var queryField = (field.get(request));
 
-                try {
-                  var queryColumnT = queryFieldClass.getConstructor().newInstance();
-                  queryColumnT.setValue(queryField);
-                  var prefix =
-                      queryColumn.tableName().isEmpty()
-                          ? ""
-                          : queryColumn.tableName() + queryColumn.delimiter();
-                  var key = prefix + queryColumn.columnName();
-                  queryColumnT.setKey(key);
-                  return queryColumnT;
-                } catch (InstantiationException
-                    | InvocationTargetException
-                    | NoSuchMethodException e) {
-                  e.printStackTrace();
-                  return null;
-                }
-              } catch (IllegalAccessException e) {
+                var queryColumnT = queryFieldClass.getConstructor().newInstance();
+                queryColumnT.setValue(queryField);
+                var prefix =
+                    queryColumn.tableName().isEmpty()
+                        ? ""
+                        : queryColumn.tableName() + queryColumn.delimiter();
+                var key = prefix + queryColumn.columnName();
+                queryColumnT.setKey(key);
+                return queryColumnT;
+              } catch (IllegalAccessException
+                  | NoSuchMethodException
+                  | InvocationTargetException
+                  | InstantiationException e) {
                 e.printStackTrace();
                 return null;
               }

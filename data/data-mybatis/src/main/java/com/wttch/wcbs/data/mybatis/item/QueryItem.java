@@ -8,8 +8,11 @@ import lombok.Setter;
 import java.util.List;
 
 /**
- * 所有通用查询字段的基类
+ * 所有通用查询字段的基类。
  *
+ * <p>通过注解将要查询的字段和注解标识的字段存储起来，然后通过mybatis插件生成sql。
+ *
+ * @param <T> 实际可以存储的数值的类型
  * @author wttch
  */
 public abstract class QueryItem<T> {

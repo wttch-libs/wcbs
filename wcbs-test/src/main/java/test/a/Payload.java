@@ -1,14 +1,13 @@
 package test.a;
 
-import com.wttch.wcbs.data.mybatis.QueryRequest;
-import com.wttch.wcbs.data.mybatis.annotations.QueryColumn;
-import com.wttch.wcbs.data.mybatis.annotations.QueryStringColumn;
-import com.wttch.wcbs.data.mybatis.annotations.QueryStringFullFuzzyColumn;
-import com.wttch.wcbs.data.mybatis.annotations.QueryStringFuzzyColumn;
+import com.wttch.wcbs.data.mybatis.annotations.*;
 import lombok.Data;
 
+import java.util.List;
+
 @Data
-public class Payload implements QueryRequest {
+@QueryEntity
+public class Payload {
   @QueryColumn(columnName = "X")
   private String test;
 
@@ -20,4 +19,7 @@ public class Payload implements QueryRequest {
 
   @QueryStringFullFuzzyColumn(columnName = "X")
   private String test3;
+
+  @QueryStringListColumn(columnName = "X")
+  private List<String> test4;
 }
