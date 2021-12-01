@@ -74,7 +74,7 @@ subprojects {
     }
 
     group = "com.wttch.wcbs"
-    version = "0.0.1.0001-SNAPSHOT"
+    version = "0.0.2"
 
     publishing {
         publications {
@@ -110,9 +110,9 @@ tasks.register("publishAll") {
         println("开始发布快照")
     }
     dependsOn(":core:publish")
-    dependsOn(":data:multi-datasource:publish")
-    dependsOn(":data:mybatis-common-query:publish")
-    dependsOn(":data:mybatis-autoconfigure:publish")
+    dependsOn(":multi-datasource:publish")
+    dependsOn(":mybatis-common-query:publish")
+    dependsOn(":mybatis-autoconfigure:publish")
     dependsOn(":web:publish")
     dependsOn(":wcbs:publish")
     doLast {

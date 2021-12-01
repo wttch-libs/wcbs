@@ -6,4 +6,9 @@
         from iam_account
         where #{param2} = #{param2}
     </select>
+    <select id="test2" resultType="java.lang.String">
+    SELECT *
+    from iam_account
+    where #{param2} = #{param2}
+</select>
 </mapper>

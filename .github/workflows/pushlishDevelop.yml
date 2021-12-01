@@ -36,9 +36,9 @@ jobs:
             ~/.gradle/caches
             ~/.gradle/wrapper
             ~/core/build
-            ~/data/multi-datasource/build
-            ~/data/mybatis-common-query/build
-            ~/data/mybatis-autoconfigure/build
+            ~/multi-datasource/build
+            ~/mybatis-common-query/build
+            ~/mybatis-autoconfigure/build
             ~/wcbs/build
             ~/web/build
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
@@ -65,9 +65,9 @@ jobs:
             ~/.gradle/caches
             ~/.gradle/wrapper
             ~/core/build
-            ~/data/multi-datasource/build
-            ~/data/mybatis-common-query/build
-            ~/data/mybatis-autoconfigure/build
+            ~/multi-datasource/build
+            ~/mybatis-common-query/build
+            ~/mybatis-autoconfigure/build
             ~/wcbs/build
             ~/web/build
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
