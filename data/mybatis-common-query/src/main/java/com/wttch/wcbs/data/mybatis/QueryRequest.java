@@ -3,12 +3,11 @@ package com.wttch.wcbs.data.mybatis;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.wttch.wcbs.data.mybatis.annotations.OrderByColumns;
 import com.wttch.wcbs.data.mybatis.item.QueryItems;
-import org.jetbrains.annotations.Nullable;
-import org.springframework.core.annotation.AnnotationUtils;
-
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Objects;
+import org.jetbrains.annotations.Nullable;
+import org.springframework.core.annotation.AnnotationUtils;
 
 /**
  * 通用查询的请求字段类型都必须实现该接口

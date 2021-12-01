@@ -8,11 +8,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class TestController {
-  @Resource TestMapper testMapper;
+  @Resource TestService testService;
 
   @PostMapping("/test")
   public RespWrapper<String> test(@RequestBody Payload payload) {
-    testMapper.test(payload, 1);
+    testService.test(payload, 1);
     return RespWrapper.ok("ok");
   }
 }

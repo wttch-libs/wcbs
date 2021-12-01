@@ -3,9 +3,8 @@ package com.wttch.wcbs.data.mybatis.item;
 import com.wttch.wcbs.data.mybatis.Parameter;
 import com.wttch.wcbs.data.mybatis.enums.QueryParamType;
 import com.wttch.wcbs.data.mybatis.exception.MybatisException;
-import lombok.Setter;
-
 import java.util.List;
+import lombok.Setter;
 
 /**
  * 所有通用查询字段的基类。

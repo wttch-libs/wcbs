@@ -1,9 +1,7 @@
 package com.wttch.wcbs.data.mybatis.annotations;
 
-import java.lang.annotation.*;
-
 import com.wttch.wcbs.data.mybatis.enums.QueryParamType;
-import org.springframework.core.annotation.AliasFor;
+import java.lang.annotation.*;
 
 /**
  * api接口查询时，通用的查询方式声明

@@ -1,9 +1,8 @@
 package com.wttch.wcbs.data.mybatis.annotations;
 
 import com.wttch.wcbs.data.mybatis.enums.QueryParamType;
-import org.springframework.core.annotation.AliasFor;
-
 import java.lang.annotation.*;
+import org.springframework.core.annotation.AliasFor;
 
 /**
  * 字段全模糊查询

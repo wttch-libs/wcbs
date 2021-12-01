@@ -33,7 +33,9 @@ wcbs:
     mybatis:
       mapper-locations: classpath:/mapper/*.xml
       configuration:
-        log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+        log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
 logging:
   level:
     com.wttch: debug
+    org.apache.ibatis: debug
+    org.mybatis: debug

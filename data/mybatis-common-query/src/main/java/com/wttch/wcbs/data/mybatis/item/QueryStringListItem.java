@@ -2,7 +2,6 @@ package com.wttch.wcbs.data.mybatis.item;
 
 import com.wttch.wcbs.data.mybatis.Parameter;
 import com.wttch.wcbs.data.mybatis.enums.QueryParamType;
-
 import java.util.LinkedList;
 import java.util.List;
 

@@ -2,19 +2,18 @@ package com.wttch.wcbs.data.mybatis.item;
 
 import com.wttch.wcbs.data.mybatis.Parameter;
 import com.wttch.wcbs.data.mybatis.enums.QueryParamType;
+import java.util.List;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 /**
- * 字符串模糊查询，后缀模糊形式，可以使用索引
+ * 字符串全模糊查询
  *
- * <p>sql: key like 'value%'
+ * <p>sql: key like '%value%'
  *
  * @author wttch
  */
 @NoArgsConstructor
-class QueryStringFuzzyItem extends QueryItem<String> {
+class QueryStringFullFuzzyItem extends QueryItem<String> {
 
   @Override
   public Class<String> valueType() {
@@ -23,16 +22,16 @@ class QueryStringFuzzyItem extends QueryItem<String> {
 
   @Override
   public QueryParamType queryParamType() {
-    return QueryParamType.STRING_FUZZY;
+    return QueryParamType.STRING_FULL_FUZZY;
   }
 
   @Override
   public String queryExpression() {
-    return String.format(" %s like ?", key);
+    return String.format(" %s like ? ", key);
   }
 
   @Override
   public List<Parameter> parameters() {
-    return List.of(new Parameter(String.class, value + "%"));
+    return List.of(new Parameter(String.class, String.format("%%%s%%", value)));
   }
 }

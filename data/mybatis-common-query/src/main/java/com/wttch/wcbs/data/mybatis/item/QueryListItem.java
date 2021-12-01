@@ -1,7 +1,6 @@
 package com.wttch.wcbs.data.mybatis.item;
 
 import com.wttch.wcbs.data.mybatis.exception.MybatisException;
-
 import java.util.LinkedList;
 import java.util.List;
 

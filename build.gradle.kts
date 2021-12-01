@@ -21,13 +21,11 @@ repositories {
 
 buildscript {
     dependencies {
-        classpath("com.wttch.plugin:libs:1.0.1.0008-SNAPSHOT")
+        classpath("com.wttch.plugin:libs:1.0.4")
     }
 
     repositories {
-        maven {
-            setUrl("https://oss.sonatype.org/content/repositories/snapshots/")
-        }
+        mavenCentral()
     }
 }
 
@@ -112,9 +110,9 @@ tasks.register("publishAll") {
         println("开始发布快照")
     }
     dependsOn(":core:publish")
-    dependsOn(":data:data-jdbc:publish")
-    dependsOn(":data:data-mybatis:publish")
-    dependsOn(":common:mybatis-autoconfigure:publish")
+    dependsOn(":data:multi-datasource:publish")
+    dependsOn(":data:mybatis-common-query:publish")
+    dependsOn(":data:mybatis-autoconfigure:publish")
     dependsOn(":web:publish")
     dependsOn(":wcbs:publish")
     doLast {

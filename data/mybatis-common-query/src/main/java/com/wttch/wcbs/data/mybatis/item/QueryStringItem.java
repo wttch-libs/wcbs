@@ -2,9 +2,8 @@ package com.wttch.wcbs.data.mybatis.item;
 
 import com.wttch.wcbs.data.mybatis.Parameter;
 import com.wttch.wcbs.data.mybatis.enums.QueryParamType;
-import lombok.NoArgsConstructor;
-
 import java.util.List;
+import lombok.NoArgsConstructor;
 
 /**
  * 字符串精确查询字段

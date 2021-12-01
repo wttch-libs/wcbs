@@ -1,9 +1,8 @@
 package test.a;
 
 import com.wttch.wcbs.data.mybatis.annotations.*;
-import lombok.Data;
-
 import java.util.List;
+import lombok.Data;
 
 @Data
 @QueryEntity

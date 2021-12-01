@@ -3,21 +3,19 @@ package com.wttch.wcbs.data.mybatis.interceptor;
 import com.wttch.wcbs.data.mybatis.annotations.QueryEntity;
 import com.wttch.wcbs.data.mybatis.exception.MybatisException;
 import com.wttch.wcbs.data.mybatis.item.QueryItems;
+import java.util.stream.Collectors;
 import org.apache.ibatis.binding.MapperMethod;
 import org.apache.ibatis.cache.CacheKey;
 import org.apache.ibatis.executor.Executor;
 import org.apache.ibatis.mapping.BoundSql;
 import org.apache.ibatis.mapping.MappedStatement;
 import org.apache.ibatis.mapping.ParameterMapping;
-import org.apache.ibatis.mapping.ParameterMode;
 import org.apache.ibatis.plugin.Interceptor;
 import org.apache.ibatis.plugin.Intercepts;
 import org.apache.ibatis.plugin.Invocation;
 import org.apache.ibatis.plugin.Signature;
 import org.apache.ibatis.session.ResultHandler;
 import org.apache.ibatis.session.RowBounds;
-
-import java.util.stream.Collectors;
 
 /**
  * 可以使用通用API字段查询的mybatis拦截器
@@ -80,8 +78,7 @@ public class QueryFieldInterceptor implements Interceptor {
         for (var param : params) {
           var property = "tmp" + cnt;
           // 不能一直往里面添加，暂时没找到好的方法
-          if (parameterMappings.stream()
-              .noneMatch(t -> t.getProperty().equals(property))) {
+          if (parameterMappings.stream().noneMatch(t -> t.getProperty().equals(property))) {
             parameterMappings.add(
                 new ParameterMapping.Builder(
                         ms.getConfiguration(), property, param.getMappingClass())

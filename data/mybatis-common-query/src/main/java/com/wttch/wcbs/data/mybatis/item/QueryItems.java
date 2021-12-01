@@ -3,14 +3,13 @@ package com.wttch.wcbs.data.mybatis.item;
 import com.wttch.wcbs.core.exception.FrameworkException;
 import com.wttch.wcbs.data.mybatis.annotations.QueryColumn;
 import com.wttch.wcbs.data.mybatis.enums.QueryParamType;
-import org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider;
-import org.springframework.core.annotation.AnnotatedElementUtils;
-import org.springframework.core.type.filter.AssignableTypeFilter;
-
 import java.lang.reflect.AccessibleObject;
 import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 import java.util.stream.Collectors;
+import org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider;
+import org.springframework.core.annotation.AnnotatedElementUtils;
+import org.springframework.core.type.filter.AssignableTypeFilter;
 
 @SuppressWarnings("unchecked")
 public class QueryItems {

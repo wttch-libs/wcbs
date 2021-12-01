@@ -4,8 +4,8 @@ import com.wttch.plugin.libs.dependencies.Jackson
 dependencies {
     api(project(":core"))
 
-    api(project(":common:mybatis-autoconfigure"))
-//    api(project(":data:data-jdbc"))
+    api(project(":data:mybatis-autoconfigure"))
+//    api(project(":data:multi-datasource"))
     api(Spring.Boot.starterAop)
     implementation(Jackson.annotations)
 
