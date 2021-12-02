@@ -19,6 +19,7 @@ dependencies {
     implementation(com.wttch.plugin.libs.dependencies.Alibaba.druid)
     implementation(project(":wcbs"))
     api(project(":multi-datasource"))
+    // implementation("com.wttch.wcbs:multi-datasource:0.0.2")
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.1")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.8.1")

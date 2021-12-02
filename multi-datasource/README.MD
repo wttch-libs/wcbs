@@ -13,7 +13,7 @@ repositories {
 
 ```kotlin
 dependencies {
-    implementation("com.wttch.wcbs:multi-datasource:0.0.2")
+    implementation("com.wttch.wcbs:multi-datasource:0.0.3")
 }
 ```
 
