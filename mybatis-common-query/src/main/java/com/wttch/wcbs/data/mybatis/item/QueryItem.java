@@ -31,6 +31,11 @@ public abstract class QueryItem<T> {
     }
   }
 
+  /**
+   * 获取通用查询的字段的数值类型
+   *
+   * @return 通用查询的字段的数值类型
+   */
   public abstract Class<T> valueType();
 
   /**

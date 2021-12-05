@@ -1,8 +1,6 @@
 package com.wttch.wcbs.data.mybatis.item;
 
-import com.wttch.wcbs.data.mybatis.Parameter;
 import com.wttch.wcbs.data.mybatis.enums.QueryParamType;
-import java.util.List;
 import lombok.NoArgsConstructor;
 
 /**
@@ -13,13 +11,13 @@ import lombok.NoArgsConstructor;
  * @author wttch
  */
 @NoArgsConstructor
-class QueryStringItem extends QueryItem<String> {
+class QueryStringItem extends BaseQueryStringItem {
 
-  @Override
-  public Class<String> valueType() {
-    return String.class;
-  }
-
+  /**
+   * 获取处理的查询字段的类型
+   *
+   * @return 处理查询的字段的类型
+   */
   @Override
   public QueryParamType queryParamType() {
     return QueryParamType.STRING;
@@ -35,8 +33,9 @@ class QueryStringItem extends QueryItem<String> {
     return String.format(" %s = ? ", key);
   }
 
+  /** 当设置值之后对值进行处理 */
   @Override
-  public List<Parameter> parameters() {
-    return List.of(new Parameter(String.class, value));
+  public void afterSetValue() {
+    this.value = String.format("%s", value);
   }
 }

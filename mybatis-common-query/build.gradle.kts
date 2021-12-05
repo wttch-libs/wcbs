@@ -1,11 +1,13 @@
 import com.wttch.plugin.libs.dependencies.Spring
 import com.wttch.plugin.libs.dependencies.Jackson
+import com.wttch.plugin.libs.dependencies.Mybatis
 
 dependencies {
     api(project(":core"))
 
-    api(project(":mybatis-autoconfigure"))
+   // api(project(":mybatis-autoconfigure"))
 //    api(project(":data:multi-datasource"))
+    api(Mybatis.mybatis)
     api(Spring.Boot.starterAop)
     implementation(Jackson.annotations)
 
