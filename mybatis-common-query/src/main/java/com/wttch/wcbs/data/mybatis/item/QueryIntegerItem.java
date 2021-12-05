@@ -4,23 +4,20 @@ import com.wttch.wcbs.data.mybatis.enums.QueryParamType;
 import lombok.NoArgsConstructor;
 
 /**
- * 字符串精确查询字段
- *
- * <p>sql: key = 'value'
+ * 整型相等
  *
  * @author wttch
  */
 @NoArgsConstructor
-class QueryStringItem extends BaseEqualQueryItem<String> {
-
+class QueryIntegerItem extends BaseEqualQueryItem<Integer> {
   /**
    * 获取通用查询的字段的数值类型
    *
    * @return 通用查询的字段的数值类型
    */
   @Override
-  public Class<String> valueType() {
-    return String.class;
+  public Class<Integer> valueType() {
+    return Integer.class;
   }
 
   /**
@@ -30,6 +27,6 @@ class QueryStringItem extends BaseEqualQueryItem<String> {
    */
   @Override
   public QueryParamType queryParamType() {
-    return QueryParamType.STRING;
+    return QueryParamType.INTEGER;
   }
 }

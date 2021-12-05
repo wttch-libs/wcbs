@@ -21,4 +21,7 @@ public class Payload {
 
   @QueryStringListColumn(columnName = "X")
   private List<String> test4;
+
+  @QueryIntegerColumn(columnName = "X")
+  private Integer testInt;
 }

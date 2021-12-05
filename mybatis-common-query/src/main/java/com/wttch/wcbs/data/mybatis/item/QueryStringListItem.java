@@ -1,13 +1,15 @@
 package com.wttch.wcbs.data.mybatis.item;
 
 import com.wttch.wcbs.data.mybatis.enums.QueryParamType;
+import lombok.NoArgsConstructor;
 
 /**
  * 字符串集合查询，查询字段是否在给定的字符串集合中
  *
  * @author wttch
  */
-public class QueryStringListItem extends BaseQueryListItem<String> {
+@NoArgsConstructor
+class QueryStringListItem extends BaseQueryListItem<String> {
   /**
    * 获取处理的查询字段的类型
    *
