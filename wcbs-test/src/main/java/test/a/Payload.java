@@ -1,5 +1,6 @@
 package test.a;
 
+import com.wttch.wcbs.core.entity.DateRange;
 import com.wttch.wcbs.data.mybatis.annotations.*;
 import java.util.List;
 import lombok.Data;
@@ -27,4 +28,7 @@ public class Payload {
 
   @QueryIntegerListColumn(columnName = "X")
   private List<Integer> testIntList;
+
+  @QueryDateRangeColumn(columnName = "Y")
+  private DateRange testDateRange;
 }
