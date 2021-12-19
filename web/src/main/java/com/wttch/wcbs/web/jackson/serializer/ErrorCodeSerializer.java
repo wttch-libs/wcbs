@@ -1,4 +1,4 @@
-package com.wttch.wcbs.web.serializer;
+package com.wttch.wcbs.web.jackson.serializer;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;

@@ -11,6 +11,11 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
  * @author wttch
  */
 public abstract class BaseJsonDeserializer<T> extends JsonDeserializer<T> {
+  protected final Class<T> valueClass;
+
+  protected BaseJsonDeserializer(Class<T> valueClass) {
+    this.valueClass = valueClass;
+  }
 
   /**
    * 获取反序列化器处理的类型的类
@@ -18,5 +23,7 @@ public abstract class BaseJsonDeserializer<T> extends JsonDeserializer<T> {
    * @return 反序列化器处理的类型的类
    */
   @Override
-  public abstract Class<? super T> handledType();
+  public Class<? super T> handledType() {
+    return valueClass;
+  }
 }

@@ -9,9 +9,9 @@ wcbs:
       primary: iam
       db0:
         name: iam
-        url: jdbc:mysql://rm-bp1o4cee732db9nxblo.mysql.rds.aliyuncs.com:3306/iam
-        username: iam
-        password: iam_Wttch96
+        url: jdbc:mysql://localhost:3306/iam
+        username: root
+        password: wc970818
         driver-class-name: com.mysql.cj.jdbc.Driver
         hikari:
           auto-commit: true
@@ -20,9 +20,9 @@ wcbs:
         init-sql-path: classpath:/init/*.sql
       db1:
         name: iam2
-        url: jdbc:mysql://rm-bp1o4cee732db9nxblo.mysql.rds.aliyuncs.com:3306/iam
-        username: iam
-        password: iam_Wttch96
+        url: jdbc:mysql://localhost:3306/iam
+        username: root
+        password: wc970818
         driver-class-name: com.mysql.cj.jdbc.Driver
         druid:
           initial-size: 10

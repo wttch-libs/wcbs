@@ -1,8 +1,11 @@
 package test.a;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.wttch.wcbs.core.entity.DateRange;
 import com.wttch.wcbs.data.mybatis.annotations.*;
 import java.util.List;
+
+import com.wttch.wcbs.web.annotations.RangeSeparator;
 import lombok.Data;
 
 @Data
@@ -30,5 +33,7 @@ public class Payload {
   private List<Integer> testIntList;
 
   @QueryDateRangeColumn(columnName = "Y")
+  @RangeSeparator("/")
+  @JsonFormat(pattern = "yyyy-MM-dd")
   private DateRange testDateRange;
 }

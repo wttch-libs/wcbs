@@ -1,5 +1,7 @@
 package com.wttch.wcbs.web;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.wttch.wcbs.web.annotations.RangeSeparator;
 import com.wttch.wcbs.web.error.ErrorCode;
 import com.wttch.wcbs.web.error.ErrorCodes;
 import java.util.HashMap;
@@ -19,6 +21,8 @@ import org.jetbrains.annotations.Nullable;
 public class RespWrapper<T> {
   @NotNull private final ErrorCode errorCode;
 
+  @JsonFormat(pattern = "yyyy-'Q'q")
+  @RangeSeparator(",")
   private final T data;
 
   /** 一些附加的数据，比如分页信息等 */

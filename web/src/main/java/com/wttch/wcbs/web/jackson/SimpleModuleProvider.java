@@ -3,6 +3,7 @@ package com.wttch.wcbs.web.jackson;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.module.SimpleModule;
+import com.fasterxml.jackson.databind.ser.std.StdSerializer;
 
 /**
  * {@link SimpleModule} 提供器，所有该类型的bean都将被注入到默认的 {@link
@@ -27,7 +28,7 @@ public class SimpleModuleProvider implements ModuleProvider {
     return this;
   }
 
-  public <T> SimpleModuleProvider addSerializer(JsonSerializer<T> jsonSerializer) {
+  public <T> SimpleModuleProvider addSerializer(StdSerializer<T> jsonSerializer) {
     simpleModule.addSerializer(jsonSerializer.handledType(), jsonSerializer);
     return this;
   }
@@ -36,8 +37,9 @@ public class SimpleModuleProvider implements ModuleProvider {
     simpleModule.addDeserializer(clazz, jsonDeserializer);
   }
 
-  public <T> void addDeserializer(BaseJsonDeserializer<T> jsonDeserializer) {
+  public <T> SimpleModuleProvider addDeserializer(BaseJsonDeserializer<T> jsonDeserializer) {
     simpleModule.addDeserializer(jsonDeserializer.handledType(), jsonDeserializer);
+    return this;
   }
 
   @Override
