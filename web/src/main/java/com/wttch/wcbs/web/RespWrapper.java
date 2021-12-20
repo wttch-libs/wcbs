@@ -21,7 +21,7 @@ import org.jetbrains.annotations.Nullable;
 public class RespWrapper<T> {
   @NotNull private final ErrorCode errorCode;
 
-  @JsonFormat(pattern = "yyyy-'Q'q")
+  @JsonFormat(pattern = "yyyy-MM月dd日 HH:mm:ss")
   @RangeSeparator(",")
   private final T data;
 

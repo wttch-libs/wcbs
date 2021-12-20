@@ -1,9 +1,8 @@
 package com.wttch.wcbs.data.mybatis.item;
 
 import com.wttch.wcbs.data.mybatis.Parameter;
-import org.apache.ibatis.mapping.BoundSql;
-
 import java.util.List;
+import org.apache.ibatis.mapping.BoundSql;
 
 /**
  * 判读相等的基类

@@ -1,8 +1,8 @@
 package com.wttch.wcbs.web.annotations;
 
-import java.lang.annotation.*;
-
 import static com.wttch.wcbs.web.jackson.serializer.DateRangeJsonSerializer.DEFAULT_SEPARATOR;
+
+import java.lang.annotation.*;
 
 /**
  * 范围的分割符号注解, 在json序列化时提供定制的功能.

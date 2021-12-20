@@ -1,8 +1,7 @@
 package com.wttch.wcbs.core.entity;
 
-import org.jetbrains.annotations.Nullable;
-
 import java.time.LocalDateTime;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * 时间范围

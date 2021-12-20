@@ -3,7 +3,6 @@ package com.wttch.wcbs.web.jackson.serializer;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.*;
 import com.fasterxml.jackson.databind.deser.ContextualDeserializer;
 import com.fasterxml.jackson.databind.ser.ContextualSerializer;
@@ -11,13 +10,12 @@ import com.fasterxml.jackson.databind.ser.std.StdSerializer;
 import com.wttch.wcbs.core.entity.Range;
 import com.wttch.wcbs.web.annotations.RangeSeparator;
 import com.wttch.wcbs.web.jackson.BaseJsonDeserializer;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
 import java.io.IOException;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.regex.Pattern;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * 范围的序列化器和反序列器的基类

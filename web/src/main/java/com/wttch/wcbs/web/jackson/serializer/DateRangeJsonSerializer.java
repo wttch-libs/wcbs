@@ -5,7 +5,6 @@ import com.fasterxml.jackson.databind.BeanProperty;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.wttch.wcbs.core.entity.DateRange;
-
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
