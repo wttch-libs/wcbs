@@ -5,5 +5,6 @@ dependencies {
     api(project(":multi-datasource"))
     api(project(":mybatis-autoconfigure"))
     api(project(":web"))
+    api(project(":logs"))
     api(Spring.Boot.starter)
 }

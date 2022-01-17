@@ -21,11 +21,12 @@ repositories {
 
 buildscript {
     dependencies {
-        classpath("com.wttch.plugin:libs:1.0.4")
+        classpath("com.wttch.plugin:libs:1.0.4.02-SNAPSHOT")
     }
 
     repositories {
         mavenCentral()
+        maven { setUrl("https://oss.sonatype.org/content/repositories/snapshots/") }
     }
 }
 
@@ -74,7 +75,7 @@ subprojects {
     }
 
     group = "com.wttch.wcbs"
-    version = "0.0.3.0001-SNAPSHOT"
+    version = "0.0.3.0002-SNAPSHOT"
 
     publishing {
         publications {
