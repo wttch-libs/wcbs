@@ -1,7 +1,6 @@
 package com.wttch.wcbs.logs.annotations;
 
-import com.wttch.wcbs.logs.entity.LogTemplate;
-
+import com.wttch.wcbs.logs.LogTemplate;
 import java.lang.annotation.*;
 
 /**

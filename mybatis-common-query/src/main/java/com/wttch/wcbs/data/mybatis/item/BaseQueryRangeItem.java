@@ -2,11 +2,10 @@ package com.wttch.wcbs.data.mybatis.item;
 
 import com.wttch.wcbs.core.entity.Range;
 import com.wttch.wcbs.data.mybatis.Parameter;
-import org.apache.ibatis.mapping.BoundSql;
-
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
+import org.apache.ibatis.mapping.BoundSql;
 
 /**
  * 范围查询的基类，一些范围查询通用的方法

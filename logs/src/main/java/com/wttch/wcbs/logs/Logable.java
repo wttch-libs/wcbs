@@ -1,5 +1,6 @@
-package com.wttch.wcbs.logs.entity;
+package com.wttch.wcbs.logs;
 
+import com.wttch.wcbs.logs.logs.OperatorLogable;
 import java.util.List;
 
 /**
@@ -9,8 +10,8 @@ import java.util.List;
  * 切面是在注解层面，同时返回值必须为该类型的实现类才可以。
  *
  * <p>一般项目函数都有自己特定的返回值，为了不影响正常的返回类型，提供了混入工具，来混入日志对象。例如 可以使用{@link
- * com.wttch.wcbs.logs.util.LogUtils#minxinLogable(Object, List, List)}来混入{@link
- * com.wttch.wcbs.logs.simple.DefaultLogable.DEFAULT}，这样切面就可以只关心{@link Logable}相关的信息而不影响实际的函数返回类型。
+ * com.wttch.wcbs.logs.util.LogUtils#mixinLogable(Object, List, List)}来混入{@link
+ * OperatorLogable.DEFAULT}，这样切面就可以只关心{@link Logable}相关的信息而不影响实际的函数返回类型。
  *
  * <p>通过该接口和{@link LogTemplate}来生成具体的日志信息对象 {@link LogInfo}, 让你的日志完全独立并且可以很好的扩展。
  *

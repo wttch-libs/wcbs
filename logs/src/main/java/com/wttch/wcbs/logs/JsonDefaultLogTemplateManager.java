@@ -1,21 +1,28 @@
-package com.wttch.wcbs.logs.simple;
+package com.wttch.wcbs.logs;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.wttch.wcbs.logs.AbstractLogTemplateManager;
-import com.wttch.wcbs.logs.entity.LogTemplate;
-import lombok.SneakyThrows;
-import org.springframework.core.io.Resource;
-
+import com.wttch.wcbs.logs.logs.OperatorLogTemplate;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+import lombok.SneakyThrows;
+import org.springframework.core.io.Resource;
 
-public class JsonEnumDefaultLogTemplateManager extends AbstractLogTemplateManager {
+/**
+ * json 类型的日志管理器的实现
+ *
+ * <p>从指定的资源中加载日志模板，日志模板具体字段请参见 {@code OperatorLogTemplate#DEFAULT}
+ *
+ * <p>TODO 做成通用，而非仅仅 OperatorLogTemplate
+ *
+ * @author wttch
+ */
+public class JsonDefaultLogTemplateManager extends AbstractLogTemplateManager {
   private Resource resource;
 
-  public JsonEnumDefaultLogTemplateManager(Resource resource) {
+  public JsonDefaultLogTemplateManager(Resource resource) {
     this.resource = resource;
     loadData();
   }
@@ -29,7 +36,7 @@ public class JsonEnumDefaultLogTemplateManager extends AbstractLogTemplateManage
     var fields = root.fields();
     while (fields.hasNext()) {
       var field = fields.next();
-      var node = objectMapper.treeToValue(field.getValue(), DefaultLogTemplate.DEFAULT.class);
+      var node = objectMapper.treeToValue(field.getValue(), OperatorLogTemplate.DEFAULT.class);
       node.setKey(field.getKey());
       logTemplateList.add(node);
     }

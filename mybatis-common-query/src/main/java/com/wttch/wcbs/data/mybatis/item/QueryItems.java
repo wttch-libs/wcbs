@@ -64,7 +64,7 @@ public class QueryItems {
                     Optional.ofNullable(QueryItems.getQueryField(queryColumn.type()))
                         .orElseThrow(() -> new FrameworkException("不支持的类型" + queryColumn.type()));
                 var queryField = (field.get(request));
-                if(Objects.isNull(queryField)) {
+                if (Objects.isNull(queryField)) {
                   return null;
                 }
                 var queryColumnT = queryFieldClass.getConstructor().newInstance();

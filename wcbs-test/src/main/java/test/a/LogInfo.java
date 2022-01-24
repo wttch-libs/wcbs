@@ -1,10 +1,10 @@
 package test.a;
 
-import com.wttch.wcbs.logs.simple.DefaultLogTemplate;
+import com.wttch.wcbs.logs.logs.OperatorLogTemplate;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
-public enum LogInfo implements DefaultLogTemplate {
+public enum LogInfo implements OperatorLogTemplate {
   /** 测试 */
   TEST("test", "测试", "测试{}", "测试log「{}」-「{}」");
 
@@ -13,17 +13,13 @@ public enum LogInfo implements DefaultLogTemplate {
   private String operatorObject;
   private String info;
 
-
-
   @Override
   public String getKey() {
     return key;
   }
 
   @Override
-  public void setKey(String key) {
-
-  }
+  public void setKey(String key) {}
 
   @Override
   public String getAction() {
@@ -31,7 +27,7 @@ public enum LogInfo implements DefaultLogTemplate {
   }
 
   @Override
-  public String getOperatorObject() {
+  public String getOperator() {
     return operatorObject;
   }
 

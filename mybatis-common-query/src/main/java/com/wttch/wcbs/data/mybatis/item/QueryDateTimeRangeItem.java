@@ -2,9 +2,8 @@ package com.wttch.wcbs.data.mybatis.item;
 
 import com.wttch.wcbs.core.entity.DateTimeRange;
 import com.wttch.wcbs.data.mybatis.enums.QueryParamType;
-import lombok.NoArgsConstructor;
-
 import java.time.LocalDateTime;
+import lombok.NoArgsConstructor;
 
 /**
  * 时间范围检索
