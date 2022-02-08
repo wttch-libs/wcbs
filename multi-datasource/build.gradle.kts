@@ -1,4 +1,12 @@
 import com.wttch.plugin.libs.dependencies.*
+import com.wttch.plugin.libs.exts.wttchLibrary
+
+plugins{
+    java
+    `java-library`
+}
+
+wttchLibrary("Wttch Common Library", "Wttch Common Library", "wttch-libs", "wcbs")
 
 dependencies {
     api(project(":core"))

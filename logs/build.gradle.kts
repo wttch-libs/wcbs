@@ -2,6 +2,14 @@ import com.wttch.plugin.libs.dependencies.JakartaAnnotation
 import com.wttch.plugin.libs.dependencies.Jetbrains
 import com.wttch.plugin.libs.dependencies.Spring
 import com.wttch.plugin.libs.dependencies.Jackson
+import com.wttch.plugin.libs.exts.wttchLibrary
+
+plugins{
+    java
+    `java-library`
+}
+
+wttchLibrary("Wttch Common Library", "Wttch Common Library", "wttch-libs", "wcbs")
 
 dependencies {
     api(Jetbrains.annotations)
@@ -9,7 +17,9 @@ dependencies {
 
     api(project(":core"))
 
-    implementation("com.wttch:common:0.1-SNAPSHOT")
+    implementation(project(":wttch-common"))
+
+    implementation("cglib:cglib:3.3.0")
 
     implementation(JakartaAnnotation.api)
     implementation(Jackson.databind)

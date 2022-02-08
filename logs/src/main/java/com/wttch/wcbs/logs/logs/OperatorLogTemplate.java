@@ -1,5 +1,6 @@
 package com.wttch.wcbs.logs.logs;
 
+import com.wttch.wcbs.core.exception.WcbsException;
 import com.wttch.wcbs.logs.LogTemplate;
 
 /**
@@ -27,7 +28,9 @@ public interface OperatorLogTemplate extends LogTemplate {
    *
    * @param key 要设置的主键的值
    */
-  void setKey(String key);
+  default void setKey(String key) {
+    throw new WcbsException("不支持 OperatorLogTemplate#setKey");
+  }
 
   /**
    * 获取操作的实际动作名称，日志打印时使用，无需格式化

@@ -1,0 +1,23 @@
+server:
+  port: 18080
+  servlet:
+    context-path: /
+
+wcbs:
+  data:
+    database:
+      primary: iam
+      db0:
+        name: iam
+        url: jdbc:mysql://blog.wttch.com:3306/iam
+        username: root
+        password: wc970818
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        hikari:
+          auto-commit: true
+          max-lifetime: 60000
+        load-function: true
+        init-sql-path: classpath:/init/*.sql
+logging:
+  level:
+    com.wttch: debug
