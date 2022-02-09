@@ -1,17 +1,15 @@
-plugins {
-    java
-}
+import com.wttch.plugin.libs.exts.wttchLibrary
 
 group = "com.wttch"
-version = "unspecified"
+version = "0.2.1.0005-SNAPSHOT"
 
-repositories {
-    mavenCentral()
-}
+wttchLibrary {
+    name = "Wttch Common"
+    description = "基本类库"
+    githubOwner = "wttch-libs"
+    githubProjectName = "wcbs"
 
-dependencies {
-    testImplementation("org.junit.jupiter:junit-jupiter-api:5.6.0")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
+    implementation("cglib:cglib:3.3.0")
 }
 
 tasks.getByName<Test>("test") {

@@ -1,19 +1,15 @@
 import com.wttch.plugin.libs.dependencies.Mybatis
 import com.wttch.plugin.libs.dependencies.Spring
-import com.wttch.plugin.libs.exts.wttchLibrary
+import com.wttch.plugin.libs.exts.wttchProject
 
-plugins {
-    java
 
-    id("org.springframework.boot") version "2.5.2"
-}
+wttchProject {
+    name = "IAM"
+    description = "IAM"
+    githubOwner = "wttch-libs"
+    githubProjectName = "wcbs"
+    isLibrary = false
 
-group = "com.wttch.cloud"
-version = "0.0.1.0001-SNAPSHOT"
-
-wttchLibrary("Wttch Common Library", "Wttch Common Library", "wttch-libs", "wcbs")
-
-dependencies {
     implementation(Spring.Boot.starter)
     implementation(Mybatis.springBoot)
     implementation(Spring.Boot.starterWeb)

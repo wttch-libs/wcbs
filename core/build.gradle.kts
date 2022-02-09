@@ -1,20 +1,22 @@
 import com.wttch.plugin.libs.dependencies.JakartaAnnotation
 import com.wttch.plugin.libs.dependencies.Jetbrains
 import com.wttch.plugin.libs.dependencies.Spring
-import com.wttch.plugin.libs.exts.wttchLibrary
+import com.wttch.plugin.libs.exts.wttchProject
 
-plugins{
-    java
-    `java-library`
-}
+group = rootProject.ext["wcbsGroup"]!!
+version = rootProject.ext["wcbsVersion"]!!
 
-wttchLibrary("Wttch Common Library", "Wttch Common Library", "wttch-libs", "wcbs")
+wttchProject {
+    name = "Wcbs Core"
+    description = "核心"
+    githubOwner = "wttch-libs"
+    githubProjectName = "wcbs"
 
-dependencies {
+
     api(Jetbrains.annotations)
     api(Spring.Boot.starter)
 
-    api(project(":wttch-common"))
+    api(project(":common"))
 
 
     implementation(JakartaAnnotation.api)

@@ -1,62 +1,55 @@
 package com.wttch.common.reflect;
 
-import com.wttch.common.util.ArrayUtils;
-import java.lang.reflect.InvocationHandler;
+import com.wttch.common.exception.WttchException;
+import net.sf.cglib.proxy.Enhancer;
+import net.sf.cglib.proxy.MethodInterceptor;
+import net.sf.cglib.proxy.MethodProxy;
+
 import java.lang.reflect.Method;
-import java.lang.reflect.Proxy;
-import java.util.*;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Optional;
 
 /**
- * 使用动态代理混入对象，可以简单实现多继承类似的效果。
+ * 对指定的对象混入指定的接口。
  *
- * <p>要注意，出现方法签名一样的方法（方法名和参数列表都一样）时只会执行找到的第一个方法，并且无法保证会执行那个。
+ * <p>java本身动态代理无法生成对象，对象又无法多继承，只能通过对象混入接口来实现类似的功能。
  *
+ * @param <T> 要混入对象的类型
  * @author wttch
  */
-public class Mixin<T> implements InvocationHandler {
-  /** 要混入的对象 */
-  private final T source;
-  /** 混入的接口列表 */
-  private final List<Class<?>> mixinClasses = new LinkedList<>();
-  /** 混入的对象 */
-  private final Map<Class<?>, Object> mixinObject = new HashMap<>();
+public class Mixin<T> implements MethodInterceptor {
+  private final T target;
+  private final List<Class<?>> delegateClasses = new LinkedList<>();
+  private final List<Object> delegateObjects = new LinkedList<>();
 
-  public Mixin(T source) {
-    this.source = source;
+  public Mixin(T delegate) {
+    this.target = delegate;
   }
 
-  /**
-   * 混入
-   *
-   * @param mixinClass 混入的数据类型
-   * @param entity 混入的实体
-   * @param <I> 混入接口的类型
-   * @param <R> 混入的对象类型
-   * @return 自身，可以链式调用
-   */
-  public <I, R extends I> Mixin<T> mixin(Class<I> mixinClass, R entity) {
-    this.mixinClasses.add(mixinClass);
-    this.mixinObject.put(mixinClass, entity);
-    return this;
+  public Mixin<T> mixin(Class<?> clazz, Object obj) {
+    if (clazz.isInstance(obj) && clazz.isInterface()) {
+      delegateClasses.add(clazz);
+      delegateObjects.add(obj);
+      return this;
+    } else {
+      throw new WttchException(
+          String.format(
+              "不能混入对象%s到类型%s, 可能混入类型不为接口，或者混入对象不是混入类型的实例.", obj.toString(), clazz.getName()));
+    }
   }
 
-  /**
-   * 构建动态代理对象
-   *
-   * @return 动态代理的对象
-   */
-  @SuppressWarnings("unchecked")
-  public T build() {
-    return (T)
-        Proxy.newProxyInstance(
-            this.getClass().getClassLoader(),
-            ArrayUtils.merge(
-                mixinClasses.toArray(new Class<?>[0]), source.getClass().getInterfaces()),
-            this);
+  public T create() {
+    Enhancer enhancer = new Enhancer();
+    enhancer.setSuperclass(target.getClass());
+    enhancer.setInterfaces(delegateClasses.toArray(new Class[0]));
+    enhancer.setCallback(this);
+    return (T) enhancer.create();
   }
 
   @Override
-  public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+  public Object intercept(Object proxy, Method method, Object[] args, MethodProxy proxyMethod)
+      throws Throwable {
     Method sourceMethod;
     args = Optional.ofNullable(args).orElse(new Object[0]);
     Class<?>[] argsClass = new Class[args.length];
@@ -64,15 +57,15 @@ public class Mixin<T> implements InvocationHandler {
       argsClass[i] = args[i].getClass();
     }
     try {
-      sourceMethod = source.getClass().getMethod(method.getName(), argsClass);
-      return sourceMethod.invoke(source, args);
+      sourceMethod = target.getClass().getMethod(method.getName(), argsClass);
+      return sourceMethod.invoke(target, args);
     } catch (NoSuchMethodException e) {
-      for (Class<?> clazz : mixinClasses) {
-        try {
-          sourceMethod = clazz.getMethod(method.getName(), argsClass);
-          return sourceMethod.invoke(mixinObject.get(clazz), args);
-        } catch (NoSuchMethodException ignored) {
+      try {
+        for (int i = 0; i < delegateClasses.size(); i++) {
+          sourceMethod = delegateClasses.get(i).getMethod(method.getName(), argsClass);
+          return sourceMethod.invoke(delegateObjects.get(i), args);
         }
+      } catch (NoSuchMethodException ignored) {
       }
       throw e;
     }

@@ -1,14 +1,18 @@
-import com.wttch.plugin.libs.dependencies.*
-import com.wttch.plugin.libs.exts.wttchLibrary
+import com.wttch.plugin.libs.dependencies.Alibaba
+import com.wttch.plugin.libs.dependencies.HikariCP
+import com.wttch.plugin.libs.dependencies.Spring
+import com.wttch.plugin.libs.exts.wttchProject
 
-plugins{
-    java
-    `java-library`
-}
+group = rootProject.ext["wcbsGroup"]!!
+version = rootProject.ext["wcbsVersion"]!!
 
-wttchLibrary("Wttch Common Library", "Wttch Common Library", "wttch-libs", "wcbs")
+wttchProject {
+    name = "Wcbs Multi DataSource"
+    description = "多数据源和多数据源的切换"
+    githubOwner = "wttch-libs"
+    githubProjectName = "wcbs"
 
-dependencies {
+
     api(project(":core"))
     api(Spring.Boot.starterJdbc)
     api(Spring.Boot.starterAop)

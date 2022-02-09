@@ -1,23 +1,24 @@
+import com.wttch.plugin.libs.dependencies.Jackson
 import com.wttch.plugin.libs.dependencies.JakartaAnnotation
 import com.wttch.plugin.libs.dependencies.Jetbrains
 import com.wttch.plugin.libs.dependencies.Spring
-import com.wttch.plugin.libs.dependencies.Jackson
-import com.wttch.plugin.libs.exts.wttchLibrary
+import com.wttch.plugin.libs.exts.wttchProject
 
-plugins{
-    java
-    `java-library`
-}
+group = rootProject.ext["wcbsGroup"]!!
+version = rootProject.ext["wcbsVersion"]!!
 
-wttchLibrary("Wttch Common Library", "Wttch Common Library", "wttch-libs", "wcbs")
+wttchProject {
+    name = "Wcbs Log"
+    description = "日志框架，使用注解和混入织入日志"
+    githubOwner = "wttch-libs"
+    githubProjectName = "wcbs"
 
-dependencies {
     api(Jetbrains.annotations)
     api(Spring.Boot.starter)
 
     api(project(":core"))
 
-    implementation(project(":wttch-common"))
+    implementation(project(":common"))
 
     implementation("cglib:cglib:3.3.0")
 

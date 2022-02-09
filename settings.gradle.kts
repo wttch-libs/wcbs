@@ -9,4 +9,4 @@ include("mybatis-autoconfigure")
 include("logs")
 include("iam-app")
 include("wttch-common")
-include("wttch-cglib")
+findProject(":wttch-common")?.name = "common"
