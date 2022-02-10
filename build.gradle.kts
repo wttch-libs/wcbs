@@ -19,7 +19,7 @@ ext["wcbsVersion"] = "0.0.3.0002-SNAPSHOT"
 
 buildscript {
     dependencies {
-        classpath("com.wttch.plugin:libs:1.0.4.07-SNAPSHOT")
+        classpath("com.wttch.plugin:libs:1.0.4.08-SNAPSHOT")
     }
 
     repositories {
