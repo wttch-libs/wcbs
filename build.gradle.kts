@@ -1,12 +1,5 @@
 import com.wttch.plugin.libs.Constants
 
-plugins {
-    java
-    `java-library`
-    `maven-publish`
-    signing
-}
-
 repositories {
     mavenCentral()
     maven {
@@ -33,7 +26,6 @@ tasks.register("publishAll") {
     doFirst {
         println("开始发布快照")
     }
-    dependsOn(":common:publish")
     dependsOn(":core:publish")
     dependsOn(":multi-datasource:publish")
     dependsOn(":mybatis-common-query:publish")

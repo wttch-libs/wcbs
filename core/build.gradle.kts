@@ -13,11 +13,10 @@ wttchProject {
     githubProjectName = "wcbs"
 
 
+    api("com.wttch:common:0.2.1.0006-SNAPSHOT")
+
     api(Jetbrains.annotations)
     api(Spring.Boot.starter)
-
-    api(project(":common"))
-
 
     implementation(JakartaAnnotation.api)
 

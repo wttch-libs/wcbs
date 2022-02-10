@@ -8,5 +8,3 @@ include("mybatis-common-query")
 include("mybatis-autoconfigure")
 include("logs")
 include("iam-app")
-include("wttch-common")
-findProject(":wttch-common")?.name = "common"

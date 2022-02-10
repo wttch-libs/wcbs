@@ -18,7 +18,7 @@ wttchProject {
 
     api(project(":core"))
 
-    implementation(project(":common"))
+    implementation("com.wttch:common:0.2.1.0006-SNAPSHOT")
 
     implementation("cglib:cglib:3.3.0")
 
