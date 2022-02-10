@@ -1,6 +1,5 @@
 package com.wttch.common.util;
 
-
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

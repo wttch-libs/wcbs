@@ -2,7 +2,6 @@ package com.wttch.wcbs.logs.util;
 
 import com.wttch.common.reflect.Mixin;
 import com.wttch.wcbs.logs.logs.OperatorLogable;
-
 import java.util.List;
 
 /**
